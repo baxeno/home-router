@@ -6,7 +6,7 @@
   - Architecture x86_64 or aarch64
   - 2 x Ethernet NICs
 - Install RPM packages
-  - `sudo dnf install -y git`
+  - `sudo dnf install -y git dhcp-server gettext-envsubst`
 
 **Install:**
 

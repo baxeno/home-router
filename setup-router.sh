@@ -3,10 +3,15 @@
 set -e
 set -u
 
-WAN_INTERFACE=""
-LAN_INTERFACE=""
-LAN_NETWORK="192.168.1.1/24"
-BRIDGE_INTERFACE="br0"
+export WAN_INTERFACE=""
+export LAN_INTERFACE=""
+export LAN_NETWORK="192.168.1.1/24"
+export BRIDGE_INTERFACE="br0"
+
+export DOMAIN_NAME=""
+export DNS_SERVER="1.1.1.2"
+export DHCP_LOW=""
+export DHCP_HIGH=""
 
 #firewall-cmd --list-all-zones
 firewall-cmd --set-default-zone=external
@@ -24,3 +29,13 @@ nmcli connection add ifname "${BRIDGE_INTERFACE}" type bridge con-name "${BRIDGE
 nmcli connection add type bridge-slave ifname "${LAN_INTERFACE}" master "${BRIDGE_INTERFACE}"
 firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
 firewall-cmd --reload
+
+# Setup DHCP server
+export "$(ipcalc --address ${LAN_NETWORK})"
+export "$(ipcalc --network ${LAN_NETWORK})"
+export "$(ipcalc --netmask ${LAN_NETWORK})"
+export "$(ipcalc --minaddr ${LAN_NETWORK})"
+export "$(ipcalc --broadcast ${LAN_NETWORK})"
+envsubst < "template/dhcpd.conf.template" > "/etc/dhcp/dhcpd.conf"
+systemctl enable dhcpd
+systemctl restart dhcpd
