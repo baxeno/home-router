@@ -15,29 +15,47 @@ export DNS_SERVER="1.1.1.2"
 export DHCP_LOW=""
 export DHCP_HIGH=""
 
-#firewall-cmd --list-all-zones
-firewall-cmd --set-default-zone=external
-firewall-cmd --permanent --zone=external --add-service=dhcpv6-client
-firewall-cmd --reload
+setup_wan_interface()
+{
+    firewall-cmd --set-default-zone=external
+    firewall-cmd --permanent --zone=external --add-service=dhcpv6-client
+    firewall-cmd --reload
+    firewall-cmd --info-zone=external
+}
 
-firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
-firewall-cmd --permanent --zone=internal --remove-service=dhcpv6-client
-firewall-cmd --permanent --zone=internal --remove-service=samba-client
-firewall-cmd --permanent --zone=internal --add-service=dhcp
-firewall-cmd --permanent --zone=internal --add-service=dns
-firewall-cmd --reload
+setup_lan_interface()
+{
+    firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
+    firewall-cmd --permanent --zone=internal --remove-service=dhcpv6-client
+    firewall-cmd --permanent --zone=internal --remove-service=samba-client
+    firewall-cmd --permanent --zone=internal --add-service=dhcp
+    firewall-cmd --permanent --zone=internal --add-service=dns
+    firewall-cmd --reload
+    firewall-cmd --info-zone=internal
+}
 
-nmcli connection add ifname "${BRIDGE_INTERFACE}" type bridge con-name "${BRIDGE_INTERFACE}" bridge.stp no ipv4.addresses "${LAN_NETWORK}" ipv4.method manual
-nmcli connection add type bridge-slave ifname "${LAN_INTERFACE}" master "${BRIDGE_INTERFACE}"
-firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
-firewall-cmd --reload
+setup_bridge()
+{
+    nmcli connection add ifname "${BRIDGE_INTERFACE}" type bridge con-name "${BRIDGE_INTERFACE}" bridge.stp no ipv4.addresses "${LAN_NETWORK}" ipv4.method manual
+    nmcli connection add type bridge-slave ifname "${LAN_INTERFACE}" master "${BRIDGE_INTERFACE}"
+    firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
+    firewall-cmd --reload
+    firewall-cmd --info-zone=internal
+}
 
-# Setup DHCP server
-export "$(ipcalc --address ${LAN_NETWORK})"
-export "$(ipcalc --network ${LAN_NETWORK})"
-export "$(ipcalc --netmask ${LAN_NETWORK})"
-export "$(ipcalc --minaddr ${LAN_NETWORK})"
-export "$(ipcalc --broadcast ${LAN_NETWORK})"
-envsubst < "template/dhcpd.conf.template" > "/etc/dhcp/dhcpd.conf"
-systemctl enable dhcpd
-systemctl restart dhcpd
+setup_dhcp_server()
+{
+    export "$(ipcalc --address ${LAN_NETWORK})"
+    export "$(ipcalc --network ${LAN_NETWORK})"
+    export "$(ipcalc --netmask ${LAN_NETWORK})"
+    export "$(ipcalc --minaddr ${LAN_NETWORK})"
+    export "$(ipcalc --broadcast ${LAN_NETWORK})"
+    envsubst < "template/dhcpd.conf.template" > "/etc/dhcp/dhcpd.conf"
+    systemctl enable dhcpd
+    systemctl restart dhcpd
+}
+
+setup_wan_interface
+setup_lan_interface
+setup_bridge
+setup_dhcp_server
