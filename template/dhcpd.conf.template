@@ -4,7 +4,7 @@ default-lease-time 3600;
 max-lease-time 28800;
 authoritative;
 subnet ${NETWORK} netmask ${NETMASK} {
-  range dynamic-bootp ${DHCP_LOW} ${DHCP_HIGH};
+  range ${DHCP_LOW} ${DHCP_HIGH};
   option broadcast-address ${BROADCAST};
   option routers ${ADDRESS};
   option interface-mtu 1500;
