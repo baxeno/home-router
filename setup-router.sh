@@ -36,6 +36,9 @@ setup_lan_interface()
 
 setup_bridge()
 {
+    if PAGER="" nmcli connection show "${BRIDGE_INTERFACE}" 2>&1 > /dev/null; then
+        nmcli connection delete "${BRIDGE_INTERFACE}"
+    fi
     nmcli connection add ifname "${BRIDGE_INTERFACE}" type bridge con-name "${BRIDGE_INTERFACE}" bridge.stp no ipv4.addresses "${LAN_NETWORK}" ipv4.method manual
     nmcli connection add type bridge-slave ifname "${LAN_INTERFACE}" master "${BRIDGE_INTERFACE}"
     firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
