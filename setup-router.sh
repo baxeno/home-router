@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright 2024 - 2024, Bruno Thomsen and the home-router contributors
+# SPDX-License-Identifier: BSD-3-Clause
 
 set -e
 set -u

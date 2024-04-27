@@ -1,5 +1,7 @@
 # Home router based on Fedora Server
 
+[![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
+
 **Prerequisites:**
 
 - Install [Fedora Server](https://fedoraproject.org/server/) on base metal router hardware
