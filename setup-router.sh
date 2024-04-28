@@ -15,6 +15,11 @@ export DNS_SERVER="1.1.1.2"
 export DHCP_LOW=""
 export DHCP_HIGH=""
 
+install_packages()
+{
+    dnf install -y git dhcp-server gettext-envsubst
+}
+
 setup_wan_interface()
 {
     firewall-cmd --set-default-zone=external
@@ -58,6 +63,7 @@ setup_dhcp_server()
     systemctl restart dhcpd
 }
 
+install_packages
 setup_wan_interface
 setup_lan_interface
 setup_bridge

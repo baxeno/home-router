@@ -13,14 +13,13 @@ This project helps you easiely setup a home router based on Fedora Server.
 **Prerequisites:**
 
 - Install [Fedora Server](https://fedoraproject.org/server/) on base metal router hardware
-  - Architecture x86_64 or aarch64
+  - Architecture: `x86_64` or `aarch64`
   - 2 x Ethernet NICs
-- Install RPM packages
-  - `sudo dnf install -y git dhcp-server gettext-envsubst`
 
-**Install:**
+**Install (from git):**
 
 ```bash
+sudo dnf install -y git
 git clone https://github.com/baxeno/home-router.git
 cd home-router
 # Update script with interfaces and possible one of the optional parameters
