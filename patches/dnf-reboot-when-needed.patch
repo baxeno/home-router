@@ -1,0 +1,11 @@
+--- automatic.conf	2024-04-28 19:18:38.181074094 +0200
++++ automatic-reboot.conf	2024-04-28 19:13:44.433850820 +0200
+@@ -25,7 +25,7 @@
+ # never                              = don't reboot after upgrades
+ # when-changed                       = reboot after any changes
+ # when-needed                        = reboot when necessary to apply changes
+-reboot = never
++reboot = when-needed
+ 
+ # The command that is run to trigger a system reboot.
+ reboot_command = "shutdown -r +5 'Rebooting after applying package updates'"

@@ -17,7 +17,18 @@ export DHCP_HIGH=""
 
 install_packages()
 {
-    dnf install -y git dhcp-server gettext-envsubst
+    dnf install -y git dhcp-server gettext-envsubst dnf-automatic patch
+}
+
+setup_auto_update()
+{
+    dnf_override_path="/etc/systemd/system/dnf-automatic-install.timer.d"
+    mkdir -p "${dnf_override_path}"
+    cp conf.d/dnf-override.conf "${dnf_override_path}"
+    patch --forward -r - "/etc/dnf/automatic.conf" "patches/dnf-reboot-when-needed.patch"
+    systemctl daemon-reload
+    systemctl enable dnf-automatic-install.timer
+    systemctl start dnf-automatic-install.timer
 }
 
 setup_wan_interface()
@@ -64,6 +75,7 @@ setup_dhcp_server()
 }
 
 install_packages
+setup_auto_update
 setup_wan_interface
 setup_lan_interface
 setup_bridge

@@ -6,6 +6,7 @@ This project helps you easiely setup a home router based on Fedora Server.
 
 **Features:**
 
+- Auto update OS
 - IPv4 router
 - DHCP server
 - Firewall
