@@ -25,7 +25,7 @@ setup_auto_update()
     dnf_override_path="/etc/systemd/system/dnf-automatic-install.timer.d"
     mkdir -p "${dnf_override_path}"
     cp conf.d/dnf-override.conf "${dnf_override_path}"
-    patch --forward -r - "/etc/dnf/automatic.conf" "patches/dnf-reboot-when-needed.patch"
+    patch --forward -r - "/etc/dnf/automatic.conf" "patches/dnf-reboot-when-needed.patch" || true
     systemctl daemon-reload
     systemctl enable dnf-automatic-install.timer
     systemctl start dnf-automatic-install.timer
