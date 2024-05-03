@@ -76,7 +76,7 @@ setup_dhcp_server()
 
 setup_ssh_server()
 {
-    cp -v "conf.d/08-home-router-sshd" "/etc/ssh/sshd_config.d/"
+    cp -v "conf.d/08-home-router-sshd.conf" "/etc/ssh/sshd_config.d/"
 }
 
 install_packages
