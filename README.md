@@ -32,6 +32,8 @@ This project setup a secure home router based on Fedora Server using existing op
 - Install [Fedora Server](https://fedoraproject.org/server/) on base metal router hardware
   - Architecture: `x86_64` or `aarch64`
   - 2 x Ethernet NICs
+- Setup ed25519 authorized key for ssh access as password login is disabled
+  - `ssh-copy-id -i ~/.ssh/id_ed25519.pub ${USER}@${HOME_ROUTER_IP}`
 
 **Install (from git):**
 
