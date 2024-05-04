@@ -72,7 +72,7 @@ setup_bridge()
     firewall-cmd --info-zone=internal
 }
 
-setup_dhcp_server()
+setup_isc_dhcp_server()
 {
     export "$(ipcalc --address ${LAN_NETWORK})"
     export "$(ipcalc --network ${LAN_NETWORK})"
@@ -95,5 +95,5 @@ setup_auto_update
 setup_wan_interface
 setup_lan_interface
 setup_bridge
-setup_dhcp_server
+setup_isc_dhcp_server
 setup_ssh_server
