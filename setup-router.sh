@@ -5,6 +5,8 @@
 set -e
 set -u
 
+VERSION="0.1.0"
+
 export WAN_INTERFACE=""
 export LAN_INTERFACE=""
 export LAN_NETWORK="192.168.1.1/24"
@@ -14,6 +16,11 @@ export DOMAIN_NAME=""
 export DNS_SERVER="1.1.1.2"
 export DHCP_LOW=""
 export DHCP_HIGH=""
+
+start_check()
+{
+    echo "home-router v${VERSION}"
+}
 
 install_packages()
 {
@@ -80,6 +87,7 @@ setup_ssh_server()
     cp -v "conf.d/08-home-router-sshd.conf" "/etc/ssh/sshd_config.d/"
 }
 
+start_check
 install_packages
 setup_auto_update
 setup_wan_interface
