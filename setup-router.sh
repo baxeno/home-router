@@ -5,7 +5,7 @@
 set -e
 set -u
 
-VERSION="0.1.0"
+VERSION="0.2.0-dev"
 
 export WAN_INTERFACE=""
 export LAN_INTERFACE=""
