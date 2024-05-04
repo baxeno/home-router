@@ -24,7 +24,9 @@ start_check()
 
 install_packages()
 {
-    dnf install -y git dhcp-server gettext-envsubst dnf-automatic patch
+    DNF_INSTALL_PKG=( dnf-automatic patch gettext-envsubst )
+    DNF_INSTALL_PKG+=( dhcp-server )
+    dnf --setopt=install_weak_deps=False --setopt=tsflags=nocontexts,nodocs --best -y "${DNF_INSTALL_PKG[@]}"
 }
 
 setup_auto_update()
