@@ -64,7 +64,7 @@ start_check()
 
 install_packages()
 {
-    DNF_INSTALL_PKG=( dnf-automatic patch gettext-envsubst )
+    DNF_INSTALL_PKG=( dnf-automatic patch gettext-envsubst ipcalc )
     DNF_INSTALL_PKG+=( dhcp-server )
     #DNF_INSTALL_PKG+=( kea )
     dnf install --setopt=install_weak_deps=False --setopt=tsflags=nocontexts,nodocs --best -y "${DNF_INSTALL_PKG[@]}"
