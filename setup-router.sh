@@ -2,20 +2,60 @@
 # Copyright 2024 - 2024, Bruno Thomsen and the home-router contributors
 # SPDX-License-Identifier: BSD-3-Clause
 
-set -e
-set -u
+set -e # Exit script if any statement returns a non-true value.
+set -u # Exit script if using an uninitialised variable.
 
 VERSION="0.2.0-dev"
 
+################################################################################
+# Mandatory Configuration
+################################################################################
+
 export WAN_INTERFACE=""
 export LAN_INTERFACE=""
-export LAN_NETWORK="192.168.1.1/24"
+
+################################################################################
+# Optional Configuration
+################################################################################
+
+# LAN_NETWORK contain IP address for router LAN interface and
+# local network size in CIDR Subnet Mask Notation.
+
+export LAN_NETWORK="192.168.82.82/24"
+
+# DOMAIN_NAME is used for FQDN lookup of devices on local network.
+# NOT SUPPORTED AT THE MOMENT
+
+export DOMAIN_NAME="tux.local"
+
+# DNS_SERVER_PRIMARY and DNS_SERVER_SECONDARY should be configured to
+# a fast one and that is most likely not your ISPs.
+#
+# Cloudflare DNS is a secure, fast, privacy-first DNS resolver.
+# No blocking or filtering content:
+# 1.1.1.1 and 1.0.0.1
+# Block Malware:
+# 1.1.1.2 and 1.0.0.2
+# Block Malware and Adult Content:
+# 1.1.1.3 and 1.0.0.3
+
+export DNS_SERVER_PRIMARY="1.1.1.2"
+export DNS_SERVER_SECONDAY="1.0.0.2"
+
+# DHCP_LOW and DHCP_HIGH is the IP address pool for DHCP clients.
+
+export DHCP_LOW="192.168.82.100"
+export DHCP_HIGH="192.168.82.199"
+
+# BRIDGE_INTERFACE is used for routing packages between LAN_INTERFACE and
+# WAN_INTERFACE.
+
 export BRIDGE_INTERFACE="br0"
 
-export DOMAIN_NAME=""
-export DNS_SERVER="1.1.1.2"
-export DHCP_LOW=""
-export DHCP_HIGH=""
+
+################################################################################
+# Implementation
+################################################################################
 
 start_check()
 {

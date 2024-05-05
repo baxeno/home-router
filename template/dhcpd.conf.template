@@ -1,5 +1,5 @@
 option domain-name "${DOMAIN_NAME}";
-option domain-name-servers ${DNS_SERVER};
+option domain-name-servers ${DNS_SERVER_PRIMARY};
 default-lease-time 3600;
 max-lease-time 28800;
 authoritative;
