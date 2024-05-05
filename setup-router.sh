@@ -40,7 +40,7 @@ export DOMAIN_NAME="tux.local"
 # 1.1.1.3 and 1.0.0.3
 
 export DNS_SERVER_PRIMARY="1.1.1.2"
-export DNS_SERVER_SECONDAY="1.0.0.2"
+export DNS_SERVER_SECONDARY="1.0.0.2"
 
 # DHCP_LOW and DHCP_HIGH is the IP address pool for DHCP clients.
 
