@@ -1,0 +1,46 @@
+{
+  "Dhcp4": {
+    "interfaces-config": {
+      "interfaces": [
+        "${LAN_INTERFACE}"
+      ]
+    },
+    "control-socket": {
+      "socket-type": "unix",
+      "socket-name": "/run/kea/kea4-ctrl-socket"
+    },
+    "lease-database": {
+      "type": "memfile",
+      "lfc-interval": 3600,
+      "persist": true,
+      "name": "/tmp/dhcp4.leases"
+    },
+    "valid-lifetime": 3600,
+    "max-valid-lifetime": 28800,
+    "subnet4": [
+      {
+        "id": 1,
+        "subnet": "${NETWORK}/${PREFIX}",
+        "pools": [
+          {
+            "pool": "${DHCP_LOW} - ${DHCP_HIGH}"
+          }
+        ],
+        "option-data": [
+          {
+            "name": "routers",
+            "data": "${ADDRESS}"
+          },
+          {
+            "name": "domain-name-servers",
+            "data": "${DNS_SERVER_PRIMARY}, ${DNS_SERVER_SECONDARY}"
+          },
+          {
+            "name": "domain-name",
+            "data": "${DOMAIN_NAME}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -52,6 +52,15 @@ export DHCP_HIGH="192.168.82.199"
 
 export BRIDGE_INTERFACE="br0"
 
+################################################################################
+# Experimental/Deprecated Configuration
+################################################################################
+
+# EXPERIMENTAL_KEA_DHCP_SERVER changes DHCP server from ISC DHCP to ISC KEA.
+# 1 = ISC KEA
+# 0 = ISC DHCP
+
+export EXPERIMENTAL_KEA_DHCP_SERVER=0
 
 ################################################################################
 # Implementation
@@ -65,8 +74,11 @@ start_check()
 install_packages()
 {
     DNF_INSTALL_PKG=( dnf-automatic patch gettext-envsubst ipcalc )
-    DNF_INSTALL_PKG+=( dhcp-server )
-    #DNF_INSTALL_PKG+=( kea )
+    if [ "${EXPERIMENTAL_KEA_DHCP_SERVER}" -eq 1 ]; then
+        DNF_INSTALL_PKG+=( kea )
+    else
+        DNF_INSTALL_PKG+=( dhcp-server )
+    fi
     dnf install --setopt=install_weak_deps=False --setopt=tsflags=nocontexts,nodocs --best -y "${DNF_INSTALL_PKG[@]}"
 }
 
@@ -125,6 +137,16 @@ setup_isc_dhcp_server()
     systemctl restart dhcpd
 }
 
+setup_kea_dhcp_server()
+{
+    export "$(ipcalc --address ${LAN_NETWORK})"
+    export "$(ipcalc --network ${LAN_NETWORK})"
+    export "$(ipcalc --prefix ${LAN_NETWORK})"
+    envsubst < "template/kea.conf.template" > "/etc/kea/kea-dhcp4.conf"
+    systemctl enable kea-dhcp4
+    systemctl restart kea-dhcp4
+}
+
 setup_ssh_server()
 {
     cp -v "conf.d/08-home-router-sshd.conf" "/etc/ssh/sshd_config.d/"
@@ -136,5 +158,9 @@ setup_auto_update
 setup_wan_interface
 setup_lan_interface
 setup_bridge
-setup_isc_dhcp_server
+if [ "${EXPERIMENTAL_KEA_DHCP_SERVER}" -eq 1 ]; then
+    setup_kea_dhcp_server
+else
+    setup_isc_dhcp_server
+fi
 setup_ssh_server
