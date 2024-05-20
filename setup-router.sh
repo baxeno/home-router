@@ -97,36 +97,41 @@ setup_auto_update()
     systemctl start dnf-automatic-install.timer
 }
 
-setup_wan_interface()
+setup_wan_firewall()
 {
     firewall-cmd --set-default-zone=external
     firewall-cmd --permanent --zone=external --add-service=dhcpv6-client
     firewall-cmd --permanent --zone=external --remove-service=ssh
-    firewall-cmd --reload
-    firewall-cmd --info-zone=external
 }
 
-setup_lan_interface()
+setup_lan_firewall()
 {
     firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
     firewall-cmd --permanent --zone=internal --remove-service=dhcpv6-client
     firewall-cmd --permanent --zone=internal --remove-service=samba-client
     firewall-cmd --permanent --zone=internal --add-service=dhcp
     firewall-cmd --permanent --zone=internal --add-service=dns
-    firewall-cmd --reload
-    firewall-cmd --info-zone=internal
 }
 
 setup_bridge()
 {
-    if PAGER="" nmcli connection show "${BRIDGE_INTERFACE}" 2>&1 > /dev/null; then
+    if PAGER="" nmcli connection show "${BRIDGE_INTERFACE}" > /dev/null 2>&1; then
         nmcli connection delete "${BRIDGE_INTERFACE}"
+        nmcli connection delete "bridge-slave-${LAN_INTERFACE}"
     fi
-    nmcli connection add ifname "${BRIDGE_INTERFACE}" type bridge con-name "${BRIDGE_INTERFACE}" bridge.stp no ipv4.addresses "${LAN_NETWORK}" ipv4.method manual
-    nmcli connection add type bridge-slave ifname "${LAN_INTERFACE}" master "${BRIDGE_INTERFACE}"
-    firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
-    firewall-cmd --reload
-    firewall-cmd --info-zone=internal
+    nmcli connection add \
+        ifname "${BRIDGE_INTERFACE}" \
+        type bridge \
+        con-name "${BRIDGE_INTERFACE}" \
+        connection.zone internal \
+        bridge.stp no \
+        ipv4.addresses "${LAN_NETWORK}" \
+        ipv4.method manual
+    nmcli connection add \
+        ifname "${LAN_INTERFACE}" \
+        type bridge-slave \
+        connection.zone internal \
+        master "${BRIDGE_INTERFACE}"
 }
 
 setup_isc_dhcp_server()
@@ -166,11 +171,18 @@ setup_ssh_server()
     cp -v "conf.d/08-home-router-sshd.conf" "/etc/ssh/sshd_config.d/"
 }
 
+firewall_status()
+{
+    firewall-cmd --reload
+    firewall-cmd --info-zone=external
+    firewall-cmd --info-zone=internal
+}
+
 start_check
 install_packages
 setup_auto_update
-setup_wan_interface
-setup_lan_interface
+setup_wan_firewall
+setup_lan_firewall
 setup_bridge
 if [ "${EXPERIMENTAL_KEA_DHCP_SERVER}" -eq 1 ]; then
     remove_isc_dhcp_server
@@ -180,3 +192,4 @@ else
     setup_isc_dhcp_server
 fi
 setup_ssh_server
+firewall_status
