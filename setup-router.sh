@@ -141,6 +141,11 @@ setup_isc_dhcp_server()
     systemctl restart dhcpd
 }
 
+remove_isc_dhcp_server()
+{
+    dnf remove -y dhcp-server
+}
+
 setup_kea_dhcp_server()
 {
     export "$(ipcalc --address ${LAN_NETWORK})"
@@ -149,6 +154,11 @@ setup_kea_dhcp_server()
     envsubst < "template/kea.conf.template" > "/etc/kea/kea-dhcp4.conf"
     systemctl enable kea-dhcp4
     systemctl restart kea-dhcp4
+}
+
+remove_kea_dhcp_server()
+{
+    dnf remove -y kea
 }
 
 setup_ssh_server()
@@ -163,8 +173,10 @@ setup_wan_interface
 setup_lan_interface
 setup_bridge
 if [ "${EXPERIMENTAL_KEA_DHCP_SERVER}" -eq 1 ]; then
+    remove_isc_dhcp_server
     setup_kea_dhcp_server
 else
+    remove_kea_dhcp_server
     setup_isc_dhcp_server
 fi
 setup_ssh_server
