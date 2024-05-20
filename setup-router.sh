@@ -62,6 +62,10 @@ export BRIDGE_INTERFACE="br0"
 
 export EXPERIMENTAL_KEA_DHCP_SERVER=0
 
+if [ -f local.cfg ]; then
+    source local.cfg
+fi
+
 ################################################################################
 # Implementation
 ################################################################################
