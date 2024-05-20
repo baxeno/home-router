@@ -2,7 +2,7 @@
   "Dhcp4": {
     "interfaces-config": {
       "interfaces": [
-        "${LAN_INTERFACE}"
+        "${BRIDGE_INTERFACE}"
       ]
     },
     "control-socket": {

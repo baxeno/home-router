@@ -130,7 +130,6 @@ setup_bridge()
     nmcli connection add \
         ifname "${LAN_INTERFACE}" \
         type bridge-slave \
-        connection.zone internal \
         master "${BRIDGE_INTERFACE}"
 }
 
