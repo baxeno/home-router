@@ -106,7 +106,6 @@ setup_wan_firewall()
 
 setup_lan_firewall()
 {
-    firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
     firewall-cmd --permanent --zone=internal --remove-service=dhcpv6-client
     firewall-cmd --permanent --zone=internal --remove-service=samba-client
     firewall-cmd --permanent --zone=internal --add-service=dhcp
@@ -123,7 +122,6 @@ setup_bridge()
         ifname "${BRIDGE_INTERFACE}" \
         type bridge \
         con-name "${BRIDGE_INTERFACE}" \
-        connection.zone internal \
         bridge.stp no \
         ipv4.addresses "${LAN_NETWORK}" \
         ipv4.method manual
@@ -131,6 +129,7 @@ setup_bridge()
         ifname "${LAN_INTERFACE}" \
         type bridge-slave \
         master "${BRIDGE_INTERFACE}"
+    firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
 }
 
 setup_isc_dhcp_server()
