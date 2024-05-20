@@ -97,7 +97,7 @@ setup_wan_interface()
 {
     firewall-cmd --set-default-zone=external
     firewall-cmd --permanent --zone=external --add-service=dhcpv6-client
-    #firewall-cmd --permanent --zone=external --remove-service=ssh
+    firewall-cmd --permanent --zone=external --remove-service=ssh
     firewall-cmd --reload
     firewall-cmd --info-zone=external
 }
