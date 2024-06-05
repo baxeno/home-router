@@ -154,6 +154,7 @@ setup_lan_firewall()
     firewall-cmd --permanent --zone=internal --remove-service=samba-client
     firewall-cmd --permanent --zone=internal --add-service=dhcp
     firewall-cmd --permanent --zone=internal --add-service=dns
+    firewall-cmd --permanent --zone=internal --add-service=ssh
     firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
     firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
 }
