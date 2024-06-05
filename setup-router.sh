@@ -110,12 +110,16 @@ setup_lan_firewall()
     firewall-cmd --permanent --zone=internal --remove-service=samba-client
     firewall-cmd --permanent --zone=internal --add-service=dhcp
     firewall-cmd --permanent --zone=internal --add-service=dns
+    firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
+    firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
 }
 
 setup_bridge()
 {
     if PAGER="" nmcli connection show "${BRIDGE_INTERFACE}" > /dev/null 2>&1; then
         nmcli connection delete "${BRIDGE_INTERFACE}"
+    fi
+    if PAGER="" nmcli connection show "bridge-slave-${LAN_INTERFACE}" > /dev/null 2>&1; then
         nmcli connection delete "bridge-slave-${LAN_INTERFACE}"
     fi
     nmcli connection add \
@@ -129,7 +133,6 @@ setup_bridge()
         ifname "${LAN_INTERFACE}" \
         type bridge-slave \
         master "${BRIDGE_INTERFACE}"
-    firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
 }
 
 setup_isc_dhcp_server()
@@ -179,9 +182,9 @@ firewall_status()
 start_check
 install_packages
 setup_auto_update
+setup_bridge
 setup_wan_firewall
 setup_lan_firewall
-setup_bridge
 if [ "${EXPERIMENTAL_KEA_DHCP_SERVER}" -eq 1 ]; then
     remove_isc_dhcp_server
     setup_kea_dhcp_server
