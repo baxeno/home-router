@@ -40,7 +40,7 @@ This project setup a secure home router based on Fedora Server using existing op
 ```bash
 sudo dnf install -y git
 git clone https://github.com/baxeno/home-router.git
-cd home-router
+cd home-router/bash
 # Update script with interfaces and possible one of the optional parameters
 sudo ./setup-router.sh
 ```
