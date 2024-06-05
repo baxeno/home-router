@@ -24,9 +24,10 @@ export LAN_INTERFACE=""
 export LAN_NETWORK="192.168.82.82/24"
 
 # DOMAIN_NAME is used for FQDN lookup of devices on local network.
+# ICANN has created .internal TLD for use with 192.168.x.x networks.
 # NOT SUPPORTED AT THE MOMENT
 
-export DOMAIN_NAME="tux.local"
+export DOMAIN_NAME="tux.internal"
 
 # DNS_SERVER_PRIMARY and DNS_SERVER_SECONDARY should be configured to
 # a fast one and that is most likely not your ISPs.
