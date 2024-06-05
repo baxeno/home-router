@@ -145,7 +145,7 @@ setup_wan_firewall()
     firewall-cmd --permanent --zone=external --add-service=dhcpv6-client
     firewall-cmd --permanent --zone=external --add-service=ssh
     firewall-cmd --permanent --zone=external --add-interface="${WAN_INTERFACE}"
-    firewall-cmd --permanent --zone=external --add-interface="${BRIDGE_INTERFACE}"
+    firewall-cmd --permanent --zone=external --add-interface="${BRIDGE_INTERFACE}" || true
 }
 
 setup_lan_firewall()
