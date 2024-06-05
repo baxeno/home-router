@@ -143,7 +143,9 @@ setup_wan_firewall()
 
     firewall-cmd --set-default-zone=external
     firewall-cmd --permanent --zone=external --add-service=dhcpv6-client
-    firewall-cmd --permanent --zone=external --remove-service=ssh
+    firewall-cmd --permanent --zone=external --add-service=ssh
+    firewall-cmd --permanent --zone=external --add-interface="${WAN_INTERFACE}"
+    firewall-cmd --permanent --zone=external --add-interface="${BRIDGE_INTERFACE}"
 }
 
 setup_lan_firewall()
@@ -156,7 +158,6 @@ setup_lan_firewall()
     firewall-cmd --permanent --zone=internal --add-service=dns
     firewall-cmd --permanent --zone=internal --add-service=ssh
     firewall-cmd --permanent --zone=internal --add-interface="${LAN_INTERFACE}"
-    firewall-cmd --permanent --zone=internal --add-interface="${BRIDGE_INTERFACE}"
 }
 
 setup_bridge()
@@ -180,6 +181,8 @@ setup_bridge()
         ifname "${LAN_INTERFACE}" \
         type bridge-slave \
         master "${BRIDGE_INTERFACE}"
+
+    cp -v "conf.d/10-kernel-router.conf" "/etc/sysctl.d/"
 }
 
 setup_isc_dhcp_server()
