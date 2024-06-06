@@ -182,7 +182,7 @@ setup_bridge()
         type bridge-slave \
         master "${BRIDGE_INTERFACE}"
 
-    cp -v "conf.d/10-kernel-router.conf" "/etc/sysctl.d/"
+    cp -v "conf.d/10-kernel-router.conf" "/etc/modules-load.d/"
 }
 
 setup_isc_dhcp_server()
