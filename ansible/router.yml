@@ -1,0 +1,8 @@
+---
+
+- name: Home router based on Fedora Server
+  gather_facts: yes
+  hosts: localhost
+  roles:
+    - home-router
+

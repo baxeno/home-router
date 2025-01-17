@@ -35,7 +35,7 @@ This project setup a secure home router based on Fedora Server using existing op
 - Setup ed25519 authorized key for ssh access as password login is disabled
   - `ssh-copy-id -i ~/.ssh/id_ed25519.pub ${USER}@${HOME_ROUTER_IP}`
 
-**Install (from git):**
+**Install (from git) using Bash script:**
 
 ```bash
 sudo dnf install -y git
@@ -44,3 +44,13 @@ cd home-router/bash
 # Update script with interfaces and possible one of the optional parameters
 sudo ./setup-router.sh
 ```
+
+**Install (from git) using Ansible:**
+
+```bash
+sudo dnf install -y git ansible ansible-playbook
+git clone https://github.com/baxeno/home-router.git
+cd home-router
+ansible-playbook --check -K ansible/router.yml
+```
+
