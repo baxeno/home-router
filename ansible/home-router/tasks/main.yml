@@ -17,6 +17,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
 
 - name: Enable automatic updates on router (Fedora 40 and earlier)
+  become: yes
   ansible.builtin.systemd_service:
     name: dnf-automatic-install.timer
     enabled: true
@@ -24,6 +25,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
 - name: Enable automatic updates on router (Fedora 41 and later)
+  become: yes
   ansible.builtin.systemd_service:
     name: dnf5-automatic.timer
     enabled: true
