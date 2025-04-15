@@ -77,3 +77,12 @@
     line: 'reboot = when-changed'
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
+- name: Reboot router after updates if needed (Fedora 41 and later)
+  ansible.builtin.copy:
+    src: files/automatic.conf
+    dest: /etc/dnf/automatic.conf
+    owner: root
+    group: root
+    mode: '0440'
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
+
