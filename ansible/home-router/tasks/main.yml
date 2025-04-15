@@ -73,6 +73,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
 
 - name: Reboot router after updates if needed (Fedora 40 and earlier)
+  become: yes
   ansible.builtin.lineinfile:
     path: /etc/dnf/automatic.conf
     regexp: '^reboot = '
@@ -80,6 +81,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
 - name: Reboot router after updates if needed (Fedora 41 and later)
+  become: yes
   ansible.builtin.copy:
     src: files/automatic.conf
     dest: /etc/dnf/automatic.conf
