@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 
 This project setup a secure home router based on Fedora Server using existing open source tools.
+It started as just a simple Bash script and evolved into a few Ansible roles.
 
 **Features:**
 
@@ -20,6 +21,9 @@ This project setup a secure home router based on Fedora Server using existing op
 - [NetworkManager](https://networkmanager.dev/) - NetworkManager is the standard Linux network configuration tool suite.
 - [ISC DHCP](https://www.isc.org/dhcp/) - Enterprise-grade solution for IP address-configuration needs.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
+
+**Used tools (Bash only):**
+
 - [gettext-envsubst](https://www.gnu.org/software/gettext/) - Substitutes the values of environment variables.
 - [patch](https://savannah.gnu.org/projects/patch/) - The patch program applies diff files to originals.
 
