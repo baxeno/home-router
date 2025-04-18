@@ -1,0 +1,11 @@
+#SPDX-License-Identifier: BSD-3-Clause
+---
+# tasks file for monitoring
+
+- name: Install packages for monitoring
+  become: yes
+  ansible.builtin.dnf:
+    name: htop, cpufetch, glances
+    state: present
+  when: ansible_distribution == 'Fedora'
+
