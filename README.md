@@ -51,6 +51,6 @@ sudo ./setup-router.sh
 sudo dnf install -y git ansible ansible-playbook
 git clone https://github.com/baxeno/home-router.git
 cd home-router
-ansible-playbook --check -K ansible/router.yml
+ansible-playbook --check -K ansible/home-router.yml
 ```
 

@@ -1,6 +1,6 @@
 galaxy_info:
   author: Bruno Thomsen
-  description: Setup a secure home router on Fedora
+  description: Setup RPM based automatic updates on Fedora Server host.
 
   issue_tracker_url: https://github.com/baxeno/home-router/issues
 
@@ -11,8 +11,9 @@ galaxy_info:
   platforms:
   - name: Fedora
     versions:
-    - all
     - 40
+    - 41
+    - 42
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes

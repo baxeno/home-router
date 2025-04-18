@@ -4,5 +4,5 @@
   gather_facts: yes
   hosts: localhost
   roles:
-    - home-router
+    - auto-update
 
