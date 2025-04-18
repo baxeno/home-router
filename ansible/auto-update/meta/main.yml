@@ -1,3 +1,4 @@
+#SPDX-License-Identifier: BSD-3-Clause
 galaxy_info:
   author: Bruno Thomsen
   description: Setup RPM based automatic updates on Fedora Server host.
