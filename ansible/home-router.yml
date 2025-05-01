@@ -6,4 +6,4 @@
   roles:
     - auto-update
     - monitoring
-
+    - soho-router

@@ -1,0 +1,24 @@
+#SPDX-License-Identifier: BSD-3-Clause
+---
+# tasks file for soho-router
+- name: OpenSSH server hardening
+  become: yes
+  ansible.builtin.copy:
+    src: files/sshd_config.d/08-home-router-sshd.conf
+    dest: /etc/ssh/sshd_config.d/08-home-router-sshd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_distribution == 'Fedora'
+
+- name: Load kernel modules
+  become: yes
+  ansible.builtin.copy:
+    src: files/modules-load.d/10-kernel-router.conf
+    dest: /etc/modules-load.d/10-kernel-router.conf
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_distribution == 'Fedora'
+
+

@@ -1,0 +1,20 @@
+#SPDX-License-Identifier: BSD-3-Clause
+---
+# defaults file for soho-router
+
+router:
+  wan:
+    interface: enp1s0
+  lan:
+    interface: enp2s0f0
+    network: 192.168.82.82/24
+  bridge:
+    interface: br0
+    network: 192.168.82.250/24
+  dhcp:
+    domain_name: tux.internal
+    dns_primary: 1.1.1.2
+    dns_secondary: 1.0.0.2
+    dhcp_pool_start: 192.168.82.100
+    dhcp_pool_end: 192.168.82.199
+
