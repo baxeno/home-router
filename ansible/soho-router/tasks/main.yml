@@ -2,7 +2,7 @@
 ---
 # tasks file for soho-router
 - name: OpenSSH server hardening
-  become: yes
+  become: true
   ansible.builtin.copy:
     src: files/sshd_config.d/08-home-router-sshd.conf
     dest: /etc/ssh/sshd_config.d/08-home-router-sshd.conf
@@ -12,7 +12,7 @@
   when: ansible_distribution == 'Fedora'
 
 - name: Load kernel modules
-  become: yes
+  become: true
   ansible.builtin.copy:
     src: files/modules-load.d/10-kernel-router.conf
     dest: /etc/modules-load.d/10-kernel-router.conf
