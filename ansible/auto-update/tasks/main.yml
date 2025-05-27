@@ -3,14 +3,14 @@
 # tasks file for auto-update
 
 - name: Install packages on router (Fedora 40 and earlier)
-  become: yes
+  become: true
   ansible.builtin.dnf:
     name: dnf-automatic
     state: present
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
 - name: Install packages on router (Fedora 41 and later)
-  become: yes
+  become: true
   ansible.builtin.dnf:
     name: dnf5-plugin-automatic, libcurl-full
     allowerasing: true
@@ -18,7 +18,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
 
 - name: Directory for dnf-automatic-install.timer override (Fedora 40 and earlier)
-  become: yes
+  become: true
   ansible.builtin.file:
     path: /etc/systemd/system/dnf-automatic-install.timer.d
     owner: root
@@ -28,7 +28,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
 - name: Directory for dnf5-automatic.timer override (Fedora 41 and later)
-  become: yes
+  become: true
   ansible.builtin.file:
     path: /etc/systemd/system/dnf5-automatic.timer.d
     owner: root
@@ -38,7 +38,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
 
 - name: Enable automatic updates on router (Fedora 40 and earlier)
-  become: yes
+  become: true
   ansible.builtin.systemd_service:
     name: dnf-automatic-install.timer
     enabled: true
@@ -47,7 +47,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
 - name: Enable automatic updates on router (Fedora 41 and later)
-  become: yes
+  become: true
   ansible.builtin.systemd_service:
     name: dnf5-automatic.timer
     enabled: true
@@ -56,7 +56,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
 
 - name: Enable weekly auto updates of router (Fedora 40 and earlier)
-  become: yes
+  become: true
   ansible.builtin.copy:
     src: files/dnf-override.conf
     dest: /etc/systemd/system/dnf-automatic-install.timer.d/dnf-override.conf
@@ -66,7 +66,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
 - name: Enable weekly auto updates of router (Fedora 41 and later)
-  become: yes
+  become: true
   ansible.builtin.copy:
     src: files/dnf-override.conf
     dest: /etc/systemd/system/dnf5-automatic.timer.d/dnf-override.conf
@@ -76,7 +76,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
 
 - name: Reboot router after updates if needed (Fedora 40 and earlier)
-  become: yes
+  become: true
   ansible.builtin.lineinfile:
     path: /etc/dnf/automatic.conf
     regexp: '^reboot = '
@@ -84,7 +84,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
 
 - name: Reboot router after updates if needed (Fedora 41 and later)
-  become: yes
+  become: true
   ansible.builtin.copy:
     src: files/automatic.conf
     dest: /etc/dnf/automatic.conf
