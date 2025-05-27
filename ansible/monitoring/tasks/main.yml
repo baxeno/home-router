@@ -3,7 +3,7 @@
 # tasks file for monitoring
 
 - name: Install packages for monitoring
-  become: yes
+  become: true
   ansible.builtin.dnf:
     name: htop, cpufetch, glances
     state: present
