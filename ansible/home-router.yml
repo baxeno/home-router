@@ -1,7 +1,7 @@
 #SPDX-License-Identifier: BSD-3-Clause
 ---
 - name: Home router based on Fedora Server
-  gather_facts: yes
+  gather_facts: true
   hosts: localhost
   roles:
     - auto-update
