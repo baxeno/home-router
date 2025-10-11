@@ -52,7 +52,7 @@ sudo ./setup-router.sh
 **Install (from git) using Ansible:**
 
 ```bash
-sudo dnf install -y git ansible ansible-playbook
+sudo dnf install -y git ansible
 git clone https://github.com/baxeno/home-router.git
 cd home-router
 ansible-playbook --check -K ansible/home-router.yml
