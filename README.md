@@ -23,6 +23,11 @@ It started as just a simple Bash script and evolved into a few Ansible roles.
 > Migrate installations before OS reach End of Life (EoL)
 > [Fedora End of Life Releases](https://docs.fedoraproject.org/en-US/releases/eol/)
 
+**WIP OSes:**
+
+- AlmaLinux OS 10 (WIP, EoL ~2035)
+- CentOS Stream 10 (WIP, EoL 2030-05-31)
+
 ## Install
 
 **Prerequisites:**
