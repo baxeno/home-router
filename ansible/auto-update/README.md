@@ -30,7 +30,7 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD-3-Clause
+Apache-2.0
 
 Author Information
 ------------------

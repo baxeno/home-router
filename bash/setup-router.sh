@@ -1,6 +1,6 @@
 #!/bin/bash
-# Copyright 2024 - 2024, Bruno Thomsen and the home-router contributors
-# SPDX-License-Identifier: BSD-3-Clause
+# Copyright 2024 - 2025, Bruno Thomsen and the home-router contributors
+# SPDX-License-Identifier: Apache-2.0
 
 set -e # Exit script if any statement returns a non-true value.
 set -u # Exit script if using an uninitialised variable.

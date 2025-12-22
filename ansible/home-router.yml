@@ -1,4 +1,4 @@
-#SPDX-License-Identifier: BSD-3-Clause
+#SPDX-License-Identifier: Apache-2.0
 ---
 - name: Home router based on Fedora Server
   gather_facts: true
