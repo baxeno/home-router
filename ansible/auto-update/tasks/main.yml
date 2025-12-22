@@ -2,22 +2,26 @@
 ---
 # tasks file for auto-update
 
-- name: Install packages on router (Fedora 40 and earlier)
+- name: Enable EPEL Repository on AlmaLinux OS and CentOS Stream
+  become: true
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_release == 'Stream') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'AlmaLinux')
+
+# -----------------------------------------------------------------------------
+# dnf4: unattended auto updates based on legacy Fedora
+# -----------------------------------------------------------------------------
+- name: Install package for auto update (dnf4)
   become: true
   ansible.builtin.dnf:
     name: dnf-automatic
     state: present
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int <= 10)
 
-- name: Install packages on router (Fedora 41 and later)
-  become: true
-  ansible.builtin.dnf:
-    name: dnf5-plugin-automatic, libcurl-full
-    allowerasing: true
-    state: present
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
-
-- name: Directory for dnf-automatic-install.timer override (Fedora 40 and earlier)
+- name: Directory for dnf-automatic-install override (dnf4)
   become: true
   ansible.builtin.file:
     path: /etc/systemd/system/dnf-automatic-install.timer.d
@@ -25,9 +29,51 @@
     group: root
     state: directory
     mode: 0755
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int <= 10)
 
-- name: Directory for dnf5-automatic.timer override (Fedora 41 and later)
+- name: Enable weekly OS auto updates (dnf4)
+  become: true
+  ansible.builtin.copy:
+    src: files/dnf-override.conf
+    dest: /etc/systemd/system/dnf-automatic-install.timer.d/dnf-override.conf
+    owner: root
+    group: root
+    mode: 0444
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int <= 10)
+
+- name: Reboot after updates if needed (dnf4)
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/dnf/automatic.conf
+    regexp: '^reboot = '
+    line: 'reboot = when-changed'
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int <= 10)
+
+- name: Enable automatic updates (dnf4)
+  become: true
+  ansible.builtin.systemd:
+    name: dnf-automatic-install.timer
+    state: started
+    enabled: true
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int <= 10)
+
+# -----------------------------------------------------------------------------
+# dnf5: unattended auto updates based on modern Fedora
+# -----------------------------------------------------------------------------
+- name: Install package for auto update (dnf5)
+  become: true
+  ansible.builtin.dnf:
+    name: dnf5-plugin-automatic, libcurl-full
+    allowerasing: true
+    state: present
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int >= 11)
+
+- name: Directory for dnf5-automatic override (dnf5)
   become: true
   ansible.builtin.file:
     path: /etc/systemd/system/dnf5-automatic.timer.d
@@ -35,37 +81,10 @@
     group: root
     state: directory
     mode: 0755
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int >= 11)
 
-- name: Enable automatic updates on router (Fedora 40 and earlier)
-  become: true
-  ansible.builtin.systemd_service:
-    name: dnf-automatic-install.timer
-    enabled: true
-    state: started
-    daemon_reload: true
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
-
-- name: Enable automatic updates on router (Fedora 41 and later)
-  become: true
-  ansible.builtin.systemd_service:
-    name: dnf5-automatic.timer
-    enabled: true
-    state: started
-    daemon_reload: true
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
-
-- name: Enable weekly auto updates of router (Fedora 40 and earlier)
-  become: true
-  ansible.builtin.copy:
-    src: files/dnf-override.conf
-    dest: /etc/systemd/system/dnf-automatic-install.timer.d/dnf-override.conf
-    owner: root
-    group: root
-    mode: 0644
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
-
-- name: Enable weekly auto updates of router (Fedora 41 and later)
+- name: Weekly OS auto updates (dnf5)
   become: true
   ansible.builtin.copy:
     src: files/dnf-override.conf
@@ -73,17 +92,10 @@
     owner: root
     group: root
     mode: 0644
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int >= 11)
 
-- name: Reboot router after updates if needed (Fedora 40 and earlier)
-  become: true
-  ansible.builtin.lineinfile:
-    path: /etc/dnf/automatic.conf
-    regexp: '^reboot = '
-    line: 'reboot = when-changed'
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
-
-- name: Reboot router after updates if needed (Fedora 41 and later)
+- name: Reboot after updates if needed (dnf5)
   become: true
   ansible.builtin.copy:
     src: files/automatic.conf
@@ -91,5 +103,32 @@
     owner: root
     group: root
     mode: 0644
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int >= 11)
+
+- name: Enable automatic updates (dnf5)
+  become: true
+  ansible.builtin.systemd:
+    name: dnf5-automatic.timer
+    state: started
+    enabled: true
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41) or
+        (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int >= 11)
+- name: Install packages on router (Fedora 40 and earlier)
+  become: true
+  ansible.builtin.dnf:
+    name: dnf-automatic
+    state: present
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
+
+# -----------------------------------------------------------------------------
+# Make sure system is up-to-date
+# -----------------------------------------------------------------------------
+- name: Upgrade all packages
+  become: true
+  ansible.builtin.dnf:
+    name: "*"
+    allowerasing: true
+    state: latest
+  when: ansible_os_family == 'RedHat'
 
