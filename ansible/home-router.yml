@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-- name: Home router based on Fedora Server
+- name: Home router based on AlmaLinux, Fedora Server or CentOS Stream
   gather_facts: true
   hosts: localhost
   roles:
