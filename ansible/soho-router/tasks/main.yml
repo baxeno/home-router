@@ -1,6 +1,28 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
 # tasks file for soho-router
+
+- name: Unsupported distributions
+  ansible.builtin.command: /bin/false
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'RedHat') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 8) or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'Scientific') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'CloudLinux') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'OracleLinux') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'Amazon') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'XenServer') or
+        (ansible_os_family == 'Debian') or
+        (ansible_os_family == 'Suse') or
+        (ansible_os_family == 'Gentoo') or
+        (ansible_os_family == 'Archlinux') or
+        (ansible_os_family == 'Mandrake') or
+        (ansible_os_family == 'HP-UX') or
+        (ansible_os_family == 'AIX') or
+        (ansible_os_family == 'Solaris') or
+        (ansible_os_family == 'FreeBSD') or
+        (ansible_os_family == 'Darwin') or
+        (ansible_os_family == 'Windows')
+
 - name: OpenSSH server hardening
   become: true
   ansible.builtin.copy:
