@@ -2,7 +2,7 @@
 ---
 # tasks file for soho-router
 
-- name: Unsupported distributions
+- name: Unsupported distributions and operating system
   ansible.builtin.command: /bin/false
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'RedHat') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 8) or
@@ -47,4 +47,9 @@
     group: root
     mode: '0644'
 
+- name: Install ISC Kea DHCPv4/DHCPv6 server
+  become: true
+  ansible.builtin.dnf:
+    name: kea
+    state: present
 

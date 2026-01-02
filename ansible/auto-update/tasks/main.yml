@@ -2,7 +2,7 @@
 ---
 # tasks file for auto-update
 
-- name: Unsupported distributions
+- name: Unsupported distributions and operating system
   ansible.builtin.command: /bin/false
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'RedHat') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 8) or
