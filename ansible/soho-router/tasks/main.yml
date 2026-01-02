@@ -53,3 +53,10 @@
     name: kea
     state: present
 
+- name: Configure ISC Kea DHCPv4 server based on template
+  ansible.builtin.template:
+    src: files/kea/kea-dhcp4.conf.j2
+    dest: /etc/kea/kea-dhcp4.conf
+    owner: root
+    group: root
+    mode: '0640'
