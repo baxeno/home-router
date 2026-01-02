@@ -2,7 +2,7 @@
 ---
 all:
   children:
-    ungrouped:
+    routers:
       hosts:
         localhost:
           ansible_connection: local
