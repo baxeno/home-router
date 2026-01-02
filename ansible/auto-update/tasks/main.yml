@@ -31,6 +31,12 @@
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_release == 'Stream') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'AlmaLinux')
 
+- name: Set hostname ({{ router_hostname }}) using systemd strategy
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ router_hostname }}"
+    use: systemd
+
 # -----------------------------------------------------------------------------
 # dnf4: unattended auto updates based on legacy Fedora
 # -----------------------------------------------------------------------------

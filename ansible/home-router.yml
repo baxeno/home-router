@@ -1,8 +1,8 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-- name: Home router based on AlmaLinux, Fedora Server or CentOS Stream
+- hosts: all
+  become: true
   gather_facts: true
-  hosts: localhost
   roles:
     - auto-update
     - soho-router

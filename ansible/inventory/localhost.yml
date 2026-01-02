@@ -1,0 +1,12 @@
+#SPDX-License-Identifier: Apache-2.0
+---
+all:
+  children:
+    ungrouped:
+      hosts:
+        localhost:
+          ansible_connection: local
+          ansible_python_interpreter: "{{ansible_playbook_python}}"
+          router_hostname: "home-router"
+          router_wan_interface: ""
+          router_lan_interface: ""
