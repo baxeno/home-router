@@ -54,6 +54,7 @@
     state: present
 
 - name: Configure ISC Kea DHCPv4 server based on template
+  become: true
   ansible.builtin.template:
     src: files/kea/kea-dhcp4.conf.j2
     dest: /etc/kea/kea-dhcp4.conf
