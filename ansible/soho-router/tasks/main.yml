@@ -23,6 +23,12 @@
         (ansible_os_family == 'Darwin') or
         (ansible_os_family == 'Windows')
 
+- name: Set hostname ({{ router_hostname }}) using systemd strategy
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ router_hostname }}"
+    use: systemd
+
 - name: OpenSSH server hardening
   become: true
   ansible.builtin.copy:
