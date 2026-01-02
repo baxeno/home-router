@@ -65,8 +65,9 @@ Install from git using Ansible:
 ```bash
 sudo dnf install -y git ansible-core
 git clone https://github.com/baxeno/home-router.git
-cd home-router
-ansible-playbook --check -K ansible/home-router.yml
+cd home-router/ansible
+# Update inventory file with your configuration
+ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
 ```
 
 **Used tools:**
