@@ -75,7 +75,7 @@
 
 - name: Enable automatic updates (dnf4)
   become: true
-  ansible.builtin.systemd:
+  ansible.builtin.systemd_service:
     name: dnf-automatic-install.timer
     state: started
     enabled: true
@@ -129,12 +129,13 @@
 
 - name: Enable automatic updates (dnf5)
   become: true
-  ansible.builtin.systemd:
+  ansible.builtin.systemd_service:
     name: dnf5-automatic.timer
     state: started
     enabled: true
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41) or
         (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int >= 11)
+
 - name: Install packages on router (Fedora 40 and earlier)
   become: true
   ansible.builtin.dnf:
