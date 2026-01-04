@@ -7,6 +7,6 @@ all:
         localhost:
           ansible_connection: local
           ansible_python_interpreter: "{{ansible_playbook_python}}"
-          router_hostname: "home-router"
-          router_wan_interface: ""
-          router_lan_interface: ""
+          #router_hostname: "home-router"
+          #router_wan_interface: ""
+          #router_lan_interface: ""

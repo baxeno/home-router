@@ -1,20 +1,17 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
 # defaults file for soho-router
+router_hostname: "home-router"
 
-router:
-  wan:
-    interface: enp1s0
-  lan:
-    interface: enp2s0f0
-    network: 192.168.82.82/24
-  bridge:
-    interface: br0
-    network: 192.168.82.250/24
-  dhcp:
-    domain_name: tux.internal
-    dns_primary: 1.1.1.2
-    dns_secondary: 1.0.0.2
-    dhcp_pool_start: 192.168.82.100
-    dhcp_pool_end: 192.168.82.199
+router_wan_interface: ""
+router_lan_interface: ""
+router_bridge_interface: "br82"
 
+router_lan_network: "192.168.10.1/24"
+router_bridge_network: "192.168.10.2/24"
+
+router_lan_dhcp_pool_start: "192.168.10.100"
+router_lan_dhcp_pool_end: "192.168.10.200"
+router_lan_dhcp_dns_primary: "1.1.1.2"
+router_lan_dhcp_dns_secondary: "1.0.0.2"
+router_lan_dhcp_domain_name: "tux.internal"

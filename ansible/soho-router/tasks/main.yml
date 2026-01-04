@@ -23,6 +23,19 @@
         (ansible_os_family == 'Darwin') or
         (ansible_os_family == 'Windows')
 
+- name: Configuration parameters
+  ansible.builtin.debug:
+    msg:
+      - "router_hostname: {{ router_hostname }}"
+      - "router_wan_interface: {{ router_wan_interface }}"
+      - "router_lan_interface: {{ router_lan_interface }}"
+
+- name: Fail when 'router_wan_interface' or 'router_lan_interface' variables are empty
+  fail:
+    msg: Missing interfaces in configuration, run 'nmcli' to discover valid interface names.
+  when: (router_wan_interface | length == 0) or
+        (router_lan_interface | length == 0)
+
 - name: Set hostname ({{ router_hostname }}) using systemd strategy
   become: true
   ansible.builtin.hostname:

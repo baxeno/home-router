@@ -1,8 +1,8 @@
-# Home router based on Fedora Server
+# Home router based on AlmaLinux or Fedora Server
 
 [![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 
-This project setup a secure home router based on Fedora Server using existing open source tools.
+This project setup a secure home router based on Linux using existing open source tools.
 It started as just a simple Bash script and evolved into a few Ansible roles.
 
 **Features:**

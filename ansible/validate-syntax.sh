@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: Apache-2.0
 
 set -e # Exit script if any statement returns a non-true value.
 set -u # Exit script if using an uninitialised variable.
