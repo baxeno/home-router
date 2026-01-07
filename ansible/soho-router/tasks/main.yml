@@ -115,6 +115,7 @@
   ansible.posix.firewalld:
     zone: internal
     interface: "{{ router_lan_interface }}"
+    immediate: true
     permanent: true
     state: enabled
 
@@ -123,6 +124,7 @@
   ansible.posix.firewalld:
     zone: external
     interface: "{{ router_wan_interface }}"
+    immediate: true
     permanent: true
     state: enabled
 
@@ -131,5 +133,6 @@
   ansible.posix.firewalld:
     zone: internal
     interface: "{{ router_bridge_interface }}"
+    immediate: true
     permanent: true
     state: enabled
