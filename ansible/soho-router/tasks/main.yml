@@ -51,15 +51,7 @@
     group: root
     mode: '0644'
 
-- name: Load kernel modules
-  become: true
-  ansible.builtin.copy:
-    src: files/modules-load.d/10-kernel-router.conf
-    dest: /etc/modules-load.d/10-kernel-router.conf
-    owner: root
-    group: root
-    mode: '0644'
-
+# Setup DHCPv4 server
 - name: Install ISC Kea DHCPv4/DHCPv6 server
   become: true
   ansible.builtin.dnf:
@@ -83,3 +75,33 @@
     name: kea-dhcp4.service
     state: started
     enabled: true
+
+# Setup interfaces and bridge
+- name: Load kernel modules
+  become: true
+  ansible.builtin.copy:
+    src: files/modules-load.d/10-kernel-router.conf
+    dest: /etc/modules-load.d/10-kernel-router.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Setup bridge interface
+  become: true
+  community.general.nmcli:
+    type: bridge
+    conn_name: "{{ router_bridge_interface }}"
+    method4: disabled
+    method6: disabled
+    state: present
+
+- name: Setup LAN interface
+  become: true
+  community.general.nmcli:
+    type: bridge-slave
+    conn_name: "{{ router_lan_interface }}"
+    method4: manual
+    method6: link-local
+    ip4: "{{ router_lan_network }}"
+    master: "{{ router_bridge_interface }}"
+    state: present
