@@ -91,17 +91,21 @@
   community.general.nmcli:
     type: bridge
     conn_name: "{{ router_bridge_interface }}"
-    method4: disabled
-    method6: disabled
+    autoconnect: true
+    method4: manual
+    method6: link-local
+    ip4: "{{ router_lan_network }}"
+    stp: false
     state: present
 
 - name: Setup LAN interface
   become: true
   community.general.nmcli:
-    type: bridge-slave
+    type: ethernet
     conn_name: "{{ router_lan_interface }}"
-    method4: manual
-    method6: link-local
-    ip4: "{{ router_lan_network }}"
+    autoconnect: true
+    method4: disabled
+    method6: disabled
+    slave_type: bridge
     master: "{{ router_bridge_interface }}"
     state: present
