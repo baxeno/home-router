@@ -109,3 +109,27 @@
     slave_type: bridge
     master: "{{ router_bridge_interface }}"
     state: present
+
+- name: Assign LAN interface ({{ router_lan_interface }}) to internal zone
+  become: true
+  ansible.posix.firewalld:
+    zone: internal
+    interface: "{{ router_lan_interface }}"
+    permanent: true
+    state: enabled
+
+- name: Assign WAN interface ({{ router_wan_interface }}) to external zone
+  become: true
+  ansible.posix.firewalld:
+    zone: external
+    interface: "{{ router_wan_interface }}"
+    permanent: true
+    state: enabled
+
+- name: Assign bridge interface ({{ router_bridge_interface }}) to internal zone
+  become: true
+  ansible.posix.firewalld:
+    zone: internal
+    interface: "{{ router_bridge_interface }}"
+    permanent: true
+    state: enabled
