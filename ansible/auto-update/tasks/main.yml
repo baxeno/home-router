@@ -3,7 +3,8 @@
 # tasks file for auto-update
 
 - name: Unsupported distributions and operating system
-  ansible.builtin.command: /bin/false
+  fail:
+    msg: Use Fedora Server for latest hardware support and AlmaLinux for LTS on supported hardware
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'RedHat') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 8) or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'Scientific') or
@@ -22,14 +23,6 @@
         (ansible_os_family == 'FreeBSD') or
         (ansible_os_family == 'Darwin') or
         (ansible_os_family == 'Windows')
-
-- name: Enable EPEL Repository on AlmaLinux OS and CentOS Stream
-  become: true
-  ansible.builtin.dnf:
-    name: epel-release
-    state: present
-  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_release == 'Stream') or
-        (ansible_os_family == 'RedHat' and ansible_distribution == 'AlmaLinux')
 
 # -----------------------------------------------------------------------------
 # dnf4: unattended auto updates based on legacy Fedora

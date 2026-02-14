@@ -3,7 +3,8 @@
 # tasks file for soho-router
 
 - name: Unsupported distributions and operating system
-  ansible.builtin.command: /bin/false
+  fail:
+    msg: Use Fedora Server for latest hardware support and AlmaLinux for LTS on supported hardware
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'RedHat') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 8) or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'Scientific') or
@@ -23,6 +24,9 @@
         (ansible_os_family == 'Darwin') or
         (ansible_os_family == 'Windows')
 
+# -----------------------------------------------------------------------------
+# Check configuration parameters
+# -----------------------------------------------------------------------------
 - name: Configuration parameters
   ansible.builtin.debug:
     msg:
@@ -35,6 +39,29 @@
     msg: Missing interfaces in configuration, run 'nmcli' to discover valid interface names.
   when: (router_wan_interface | length == 0) or
         (router_lan_interface | length == 0)
+
+# -----------------------------------------------------------------------------
+# Install needed Ansible collections
+# -----------------------------------------------------------------------------
+- name: Enable EPEL Repository on AlmaLinux OS and CentOS Stream
+  become: true
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_release == 'Stream') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'AlmaLinux')
+
+- name: Install Ansible collection (Community) for NetworkManager configuration
+  become: true
+  ansible.builtin.dnf:
+    name: ansible-collection-community-general
+    state: present
+
+- name: Install Ansible collection (POSIX platforms) for firewalld configuration
+  become: true
+  ansible.builtin.dnf:
+    name: ansible-collection-ansible-posix python3-firewall
+    state: present
 
 - name: Set hostname ({{ router_hostname }}) using systemd strategy
   become: true
@@ -51,7 +78,9 @@
     group: root
     mode: '0644'
 
+# -----------------------------------------------------------------------------
 # Setup DHCPv4 server
+# -----------------------------------------------------------------------------
 - name: Install ISC Kea DHCPv4/DHCPv6 server
   become: true
   ansible.builtin.dnf:
@@ -76,7 +105,9 @@
     state: started
     enabled: true
 
+# -----------------------------------------------------------------------------
 # Setup interfaces and bridge
+# -----------------------------------------------------------------------------
 - name: Load kernel modules
   become: true
   ansible.builtin.copy:
@@ -110,6 +141,9 @@
     master: "{{ router_bridge_interface }}"
     state: present
 
+# -----------------------------------------------------------------------------
+# Configure allowed IP traffic in firewall
+# -----------------------------------------------------------------------------
 - name: Assign LAN interface ({{ router_lan_interface }}) to internal zone
   become: true
   ansible.posix.firewalld:
