@@ -60,7 +60,7 @@
 - name: Install Ansible collection (POSIX platforms) for firewalld configuration
   become: true
   ansible.builtin.dnf:
-    name: ansible-collection-ansible-posix python3-firewall
+    name: ansible-collection-ansible-posix, python3-firewall
     state: present
 
 - name: Set hostname ({{ router_hostname }}) using systemd strategy
