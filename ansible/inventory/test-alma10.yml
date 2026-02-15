@@ -10,3 +10,13 @@ all:
           router_hostname: "alma10-router"
           router_wan_interface: "enp1s0"
           router_lan_interface: "enp7s0"
+          router_domain: "alma-testing.internal"
+          router_lan_subnet: "192.0.2.0/24"
+          router_lan_address: "192.0.2.1"
+          dhcp_primary_dns: "86.54.11.1"
+          dhcp_secondary_dns: "86.54.11.201"
+          #router_dns_over_https: "https://protective.joindns4.eu/dns-query"
+          #router_dns_over_tls: "protective.joindns4.eu"
+          dhcp_client_pool_start: "192.0.2.100"
+          dhcp_client_pool_end: "192.0.2.250"
+
