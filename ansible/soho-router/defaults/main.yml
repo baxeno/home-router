@@ -7,7 +7,7 @@ router_lan_interface: ""
 router_bridge_interface: "br82"
 router_domain: "tux.internal"
 router_lan_network: "192.168.10.1/24"
-router_lan_subnet: "192.168.10.0/24"
+router_lan_subnet: "{{ router_lan_network | ansible.utils.ipaddr('network') }}/{{ router_lan_network | ansible.utils.ipaddr('prefix') }}"
 
 dhcp_router_ip: "{{ router_lan_network | ansible.utils.ipaddr('address') }}"
 dhcp_primary_dns: "1.1.1.2"

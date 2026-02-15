@@ -79,6 +79,9 @@
         (router_bridge_interface | length == 0) or
         (router_lan_interface | length == 0)
 
+# -----------------------------------------------------------------------------
+# Setup basic host configuration and SSH server
+# -----------------------------------------------------------------------------
 
 - name: Set hostname ({{ router_hostname }}) using systemd strategy
   become: true
