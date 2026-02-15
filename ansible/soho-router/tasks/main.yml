@@ -192,6 +192,7 @@
     state: enabled
 
 - name: Enable NAT masquerade in internal zone
+  become: true
   ansible.posix.firewalld:
     masquerade: true
     state: enabled
