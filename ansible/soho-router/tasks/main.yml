@@ -170,3 +170,35 @@
     immediate: true
     permanent: true
     state: enabled
+
+- name: Do not permit unused services in external zone
+  ansible.posix.firewalld:
+    zone: external
+    service: "{{ item }}"
+    immediate: true
+    permanent: true
+    state: disabled
+  loop:
+    - ssh
+
+- name: Do not permit unused services in internal zone
+  ansible.posix.firewalld:
+    zone: internal
+    service: "{{ item }}"
+    immediate: true
+    permanent: true
+    state: disabled
+  loop:
+    - samba-client
+    - cockpit
+
+- name: Permit used services in internal zone
+  ansible.posix.firewalld:
+    zone: internal
+    service: "{{ item }}"
+    immediate: true
+    permanent: true
+    state: disabled
+  loop:
+    - dhcp
+    - ssh
