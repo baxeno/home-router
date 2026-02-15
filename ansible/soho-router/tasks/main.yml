@@ -137,7 +137,18 @@
     group: root
     mode: '0644'
 
-- name: Setup bridge interface
+- name: Setup WAN interface ({{ router_wan_interface }})
+  become: true
+  community.general.nmcli:
+    type: ethernet
+    conn_name: "{{ router_wan_interface }}"
+    autoconnect: true
+    method4: auto
+    method6: auto
+    zone: external
+    state: present
+
+- name: Setup bridge interface ({{ router_bridge_interface }})
   become: true
   community.general.nmcli:
     type: bridge
@@ -147,9 +158,10 @@
     method6: link-local
     ip4: "{{ router_lan_network }}"
     stp: false
+    zone: internal
     state: present
 
-- name: Setup LAN interface
+- name: Setup LAN interface ({{ router_lan_interface }})
   become: true
   community.general.nmcli:
     type: ethernet
@@ -159,26 +171,27 @@
     method6: disabled
     slave_type: bridge
     master: "{{ router_bridge_interface }}"
+    zone: internal
     state: present
 
 # -----------------------------------------------------------------------------
 # Configure allowed IP traffic in firewalld
 # -----------------------------------------------------------------------------
-- name: Assign LAN interface ({{ router_lan_interface }}) to internal zone
-  become: true
-  ansible.posix.firewalld:
-    zone: internal
-    interface: "{{ router_lan_interface }}"
-    permanent: true
-    state: enabled
-  notify:
-    - Restart firewalld service
-
 - name: Assign WAN interface ({{ router_wan_interface }}) to external zone
   become: true
   ansible.posix.firewalld:
     zone: external
     interface: "{{ router_wan_interface }}"
+    permanent: true
+    state: enabled
+  notify:
+    - Restart firewalld service
+
+- name: Assign LAN interface ({{ router_lan_interface }}) to internal zone
+  become: true
+  ansible.posix.firewalld:
+    zone: internal
+    interface: "{{ router_lan_interface }}"
     permanent: true
     state: enabled
   notify:
