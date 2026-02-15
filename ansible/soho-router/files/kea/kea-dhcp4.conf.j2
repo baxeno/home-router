@@ -10,7 +10,7 @@
         // See section 8.2.4 for more details. You probably want to add just
         // interface name (e.g. "eth0" or specific IPv4 address on that
         // interface name (e.g. "eth0/192.0.2.1").
-        "interfaces": [ "{{ router_lan_interface }}" ]
+        "interfaces": [ "{{ router_bridge_interface }}" ]
 
         // Kea DHCPv4 server by default listens using raw sockets. This ensures
         // all packets, including those sent by directly connected clients
@@ -148,7 +148,7 @@
             // are used by the server to determine the subnet they belong to.
             // When this parameter is used, the "relay" parameter is typically
             // unused.
-            "interface": "{{ router_lan_interface }}",
+            "interface": "{{ router_bridge_interface }}",
 
             // These are options that are subnet specific. In most cases,
             // you need to define at least routers option, as without this
