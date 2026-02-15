@@ -25,6 +25,35 @@
         (ansible_os_family == 'Windows')
 
 # -----------------------------------------------------------------------------
+# Install needed Ansible collections
+# -----------------------------------------------------------------------------
+- name: Enable EPEL Repository on AlmaLinux OS and CentOS Stream
+  become: true
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_release == 'Stream') or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'AlmaLinux')
+
+- name: Install Ansible collection (Community) for NetworkManager configuration
+  become: true
+  ansible.builtin.dnf:
+    name: ansible-collection-community-general
+    state: present
+
+- name: Install Ansible collection (POSIX platforms) for firewalld configuration
+  become: true
+  ansible.builtin.dnf:
+    name: ansible-collection-ansible-posix, python3-firewall
+    state: present
+
+- name: Install Ansible Utilities collection dependency (Python library netaddr) for management and manipulation of configuration data
+  become: true
+  ansible.builtin.dnf:
+    name: python3-netaddr
+    state: present
+
+# -----------------------------------------------------------------------------
 # Check configuration parameters
 # -----------------------------------------------------------------------------
 - name: Configuration parameters
@@ -50,28 +79,6 @@
         (router_bridge_interface | length == 0) or
         (router_lan_interface | length == 0)
 
-# -----------------------------------------------------------------------------
-# Install needed Ansible collections
-# -----------------------------------------------------------------------------
-- name: Enable EPEL Repository on AlmaLinux OS and CentOS Stream
-  become: true
-  ansible.builtin.dnf:
-    name: epel-release
-    state: present
-  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_release == 'Stream') or
-        (ansible_os_family == 'RedHat' and ansible_distribution == 'AlmaLinux')
-
-- name: Install Ansible collection (Community) for NetworkManager configuration
-  become: true
-  ansible.builtin.dnf:
-    name: ansible-collection-community-general
-    state: present
-
-- name: Install Ansible collection (POSIX platforms) for firewalld configuration
-  become: true
-  ansible.builtin.dnf:
-    name: ansible-collection-ansible-posix, python3-firewall
-    state: present
 
 - name: Set hostname ({{ router_hostname }}) using systemd strategy
   become: true
