@@ -71,6 +71,10 @@ cd home-router/ansible
 ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
 ```
 
+Ansible inventory configuration:
+
+`router_lan_subnet` and `dhcp_router_ip` variables are automatically calculated based on `router_lan_network`.
+
 **Used tools:**
 
 - [Fedora Server](https://fedoraproject.org/server/) - Run server workloads on bare metal or virtual machines with the latest open source technologies curated by the Fedora Community.
