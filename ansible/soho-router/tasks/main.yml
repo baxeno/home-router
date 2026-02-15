@@ -33,6 +33,14 @@
       - "router_hostname: {{ router_hostname }}"
       - "router_wan_interface: {{ router_wan_interface }}"
       - "router_lan_interface: {{ router_lan_interface }}"
+      - "router_bridge_interface: {{ router_bridge_interface }}"
+      - "router_domain: {{ router_domain }}"
+      - "router_lan_subnet: {{ router_lan_subnet }}"
+      - "router_lan_address: {{ router_lan_address }}"
+      - "dhcp_primary_dns: {{ dhcp_primary_dns }}"
+      - "dhcp_secondary_dns: {{ dhcp_secondary_dns }}"
+      - "dhcp_client_pool_start: {{ dhcp_client_pool_start }}"
+      - "dhcp_client_pool_end: {{ dhcp_client_pool_end }}"
 
 - name: Fail when 'router_wan_interface' or 'router_lan_interface' variables are empty
   fail:
