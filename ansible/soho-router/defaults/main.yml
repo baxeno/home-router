@@ -2,16 +2,15 @@
 ---
 # defaults file for soho-router
 router_hostname: "home-router"
-
 router_wan_interface: ""
 router_lan_interface: ""
 router_bridge_interface: "br82"
-
+router_domain: "tux.internal"
 router_lan_network: "192.168.10.1/24"
-router_bridge_network: "192.168.10.2/24"
+router_lan_subnet: "192.168.10.0/24"
 
-router_lan_dhcp_pool_start: "192.168.10.100"
-router_lan_dhcp_pool_end: "192.168.10.200"
-router_lan_dhcp_dns_primary: "1.1.1.2"
-router_lan_dhcp_dns_secondary: "1.0.0.2"
-router_lan_dhcp_domain_name: "tux.internal"
+dhcp_router_ip: "{{ router_lan_network | ansible.utils.ipaddr('address') }}"
+dhcp_primary_dns: "1.1.1.2"
+dhcp_secondary_dns: "1.0.0.2"
+dhcp_client_pool_start: "192.168.10.100"
+dhcp_client_pool_end: "192.168.10.200"
