@@ -193,6 +193,7 @@
   loop:
     - samba-client
     - cockpit
+    - mdns
 
 - name: Permit used services in internal zone
   become: true
@@ -201,7 +202,7 @@
     service: "{{ item }}"
     immediate: true
     permanent: true
-    state: disabled
+    state: enabled
   loop:
     - dhcp
     - ssh
