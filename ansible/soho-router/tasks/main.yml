@@ -43,10 +43,11 @@
       - "dhcp_client_pool_start: {{ dhcp_client_pool_start }}"
       - "dhcp_client_pool_end: {{ dhcp_client_pool_end }}"
 
-- name: Fail when 'router_wan_interface' or 'router_lan_interface' variables are empty
+- name: Fail when 'router_wan_interface', 'router_bridge_interface' or 'router_lan_interface' variables are empty
   fail:
     msg: Missing interfaces in configuration, run 'nmcli' to discover valid interface names.
   when: (router_wan_interface | length == 0) or
+        (router_bridge_interface | length == 0) or
         (router_lan_interface | length == 0)
 
 # -----------------------------------------------------------------------------
