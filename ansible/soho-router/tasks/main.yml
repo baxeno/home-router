@@ -191,6 +191,14 @@
     permanent: true
     state: enabled
 
+- name: Enable NAT masquerade in internal zone
+  ansible.posix.firewalld:
+    masquerade: true
+    state: enabled
+    immediate: true
+    permanent: true
+    zone: internal
+
 - name: Do not permit unused services in external zone
   become: true
   ansible.posix.firewalld:
