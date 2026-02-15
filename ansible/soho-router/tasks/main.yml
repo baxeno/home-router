@@ -116,7 +116,7 @@
     group: kea
     mode: '0640'
   notify:
-    - Restart Kea DHCPv4 server
+    - Restart Kea DHCPv4 service
 
 - name: Enable ISC Kea DHCPv4 systemd service
   become: true
@@ -126,7 +126,7 @@
     enabled: true
 
 # -----------------------------------------------------------------------------
-# Setup interfaces and bridge
+# Setup interfaces and bridge in NetworkManager
 # -----------------------------------------------------------------------------
 - name: Load kernel modules
   become: true
@@ -162,76 +162,83 @@
     state: present
 
 # -----------------------------------------------------------------------------
-# Configure allowed IP traffic in firewall
+# Configure allowed IP traffic in firewalld
 # -----------------------------------------------------------------------------
 - name: Assign LAN interface ({{ router_lan_interface }}) to internal zone
   become: true
   ansible.posix.firewalld:
     zone: internal
     interface: "{{ router_lan_interface }}"
-    immediate: true
     permanent: true
     state: enabled
+  notify:
+    - Restart firewalld service
 
 - name: Assign WAN interface ({{ router_wan_interface }}) to external zone
   become: true
   ansible.posix.firewalld:
     zone: external
     interface: "{{ router_wan_interface }}"
-    immediate: true
     permanent: true
     state: enabled
+  notify:
+    - Restart firewalld service
 
 - name: Assign bridge interface ({{ router_bridge_interface }}) to internal zone
   become: true
   ansible.posix.firewalld:
     zone: internal
     interface: "{{ router_bridge_interface }}"
-    immediate: true
     permanent: true
     state: enabled
+  notify:
+    - Restart firewalld service
 
 - name: Enable NAT masquerade in internal zone
   become: true
   ansible.posix.firewalld:
     masquerade: true
     state: enabled
-    immediate: true
     permanent: true
     zone: internal
+  notify:
+    - Restart firewalld service
 
 - name: Do not permit unused services in external zone
   become: true
   ansible.posix.firewalld:
     zone: external
     service: "{{ item }}"
-    immediate: true
     permanent: true
     state: disabled
   loop:
     - ssh
+  notify:
+    - Restart firewalld service
 
 - name: Do not permit unused services in internal zone
   become: true
   ansible.posix.firewalld:
     zone: internal
     service: "{{ item }}"
-    immediate: true
     permanent: true
     state: disabled
   loop:
     - samba-client
     - cockpit
     - mdns
+  notify:
+    - Restart firewalld service
 
 - name: Permit used services in internal zone
   become: true
   ansible.posix.firewalld:
     zone: internal
     service: "{{ item }}"
-    immediate: true
     permanent: true
     state: enabled
   loop:
     - dhcp
     - ssh
+  notify:
+    - Restart firewalld service

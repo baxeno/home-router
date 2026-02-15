@@ -2,8 +2,14 @@
 ---
 # handlers file for soho-router
 
-- name: Restart Kea DHCPv4 server
+- name: Restart Kea DHCPv4 service
   become: true
   ansible.builtin.systemd_service:
     name: kea-dhcp4.service
+    state: restarted
+
+- name: Restart firewalld service
+  become: true
+  ansible.builtin.systemd_service:
+    name: firewalld.service
     state: restarted
