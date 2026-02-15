@@ -129,13 +129,6 @@
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_version|int >= 41) or
         (ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora' and ansible_distribution_major_version|int >= 11)
 
-- name: Install packages on router (Fedora 40 and earlier)
-  become: true
-  ansible.builtin.dnf:
-    name: dnf-automatic
-    state: present
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version|int <= 40
-
 # -----------------------------------------------------------------------------
 # Make sure system is up-to-date
 # -----------------------------------------------------------------------------
