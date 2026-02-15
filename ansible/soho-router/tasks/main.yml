@@ -172,6 +172,7 @@
     state: enabled
 
 - name: Do not permit unused services in external zone
+  become: true
   ansible.posix.firewalld:
     zone: external
     service: "{{ item }}"
@@ -182,6 +183,7 @@
     - ssh
 
 - name: Do not permit unused services in internal zone
+  become: true
   ansible.posix.firewalld:
     zone: internal
     service: "{{ item }}"
@@ -193,6 +195,7 @@
     - cockpit
 
 - name: Permit used services in internal zone
+  become: true
   ansible.posix.firewalld:
     zone: internal
     service: "{{ item }}"
