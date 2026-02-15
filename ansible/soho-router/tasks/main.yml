@@ -207,10 +207,11 @@
   notify:
     - Restart firewalld service
 
-- name: Enable NAT masquerade in internal zone
+- name: Enable NAT masquerade and forwarding in internal zone
   become: true
   ansible.posix.firewalld:
     masquerade: true
+    forward: true
     state: enabled
     permanent: true
     zone: internal
