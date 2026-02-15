@@ -93,7 +93,7 @@
     src: files/kea/kea-dhcp4.conf.j2
     dest: /etc/kea/kea-dhcp4.conf
     owner: root
-    group: root
+    group: kea
     mode: '0640'
   notify:
     - Restart Kea DHCPv4 server
