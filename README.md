@@ -15,6 +15,10 @@ It started as just a simple Bash script and evolved into a few Ansible roles.
 
 **Supported OSes:**
 
+AlmaLinux is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
+Fedora Server is recommeded for new hardware and latest software features.
+
+- AlmaLinux OS 10 (EoL ~2035)
 - Fedora Server 43
 - Fedora Server 42
 - Fedora Server 41 (EoL 2025-11-26)
@@ -25,7 +29,6 @@ It started as just a simple Bash script and evolved into a few Ansible roles.
 
 **WIP OSes:**
 
-- AlmaLinux OS 10 (WIP, EoL ~2035)
 - CentOS Stream 10 (WIP, EoL 2030-05-31)
 
 ## Install
