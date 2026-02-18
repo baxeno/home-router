@@ -1,7 +1,7 @@
 #SPDX-License-Identifier: Apache-2.0
 galaxy_info:
   author: Bruno Thomsen
-  description: Setup RPM based automatic updates on Fedora Server host.
+  description: Setup DNF4/DNF5 based weekly automatic updates on host.
 
   issue_tracker_url: https://github.com/baxeno/home-router/issues
 
@@ -15,6 +15,10 @@ galaxy_info:
     - 40
     - 41
     - 42
+    - 43
+  - name: AlmaLinux
+    versions:
+    - 10
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
