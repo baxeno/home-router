@@ -1,19 +1,24 @@
 #SPDX-License-Identifier: Apache-2.0
 galaxy_info:
-  author: your name
-  description: your role description
-  company: your company (optional)
+  author: Bruno Thomsen
+  description: Setup router based on Linux, systemd, Kea DHCP, NetworkManager and firewalld.
 
-  # If the issue tracker for your role is not on github, uncomment the
-  # next line and provide a value
-  # issue_tracker_url: http://example.com/issue/tracker
+  issue_tracker_url: https://github.com/baxeno/home-router/issues
 
   license: Apache-2.0
 
   min_ansible_version: 2.1
 
-  # If this a Container Enabled role, provide the minimum Ansible Container version.
-  # min_ansible_container_version:
+  platforms:
+  - name: Fedora
+    versions:
+    - 40
+    - 41
+    - 42
+    - 43
+  - name: AlmaLinux
+    versions:
+    - 10
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
