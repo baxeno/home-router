@@ -5,7 +5,7 @@
 set -e # Exit script if any statement returns a non-true value.
 set -u # Exit script if using an uninitialised variable.
 
-PKG_VERSION="0.3.0-dev"
+PKG_VERSION="0.3.0"
 
 ################################################################################
 # Mandatory Configuration
