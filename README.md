@@ -65,29 +65,6 @@ Ansible inventory configuration:
 
 `router_lan_subnet` and `dhcp_router_ip` variables are automatically calculated based on `router_lan_network`.
 
-**Development snapshot:**
-
-Install from git using Bash script:
-
-```bash
-sudo dnf install -y git
-git clone https://github.com/baxeno/home-router.git
-cd home-router/bash
-# Update script with interfaces and possible one of the optional parameters
-sudo ./setup-router.sh
-```
-
-Install from git using Ansible:
-
-```bash
-sudo dnf install -y git ansible-core
-ansible-galaxy collection install -r ansible/requirements.yml
-git clone https://github.com/baxeno/home-router.git
-cd home-router/ansible
-# Update inventory file with your configuration
-ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
-```
-
 ## FAQ
 
 ### Why is there no support for WiFi Access Point (AP) feature?
@@ -113,4 +90,29 @@ Recommended action is to have seperate hardware for router and WiFi APs.
 
 - [gettext-envsubst](https://www.gnu.org/software/gettext/) - Substitutes the values of environment variables.
 - [patch](https://savannah.gnu.org/projects/patch/) - The patch program applies diff files to originals.
+
+## Development
+
+Feel free to open bug reports or feature requests in [Issues section](https://github.com/baxeno/home-router/issues).
+
+Install from git using Bash script:
+
+```bash
+sudo dnf install -y git
+git clone https://github.com/baxeno/home-router.git
+cd home-router/bash
+# Update script with interfaces and possible one of the optional parameters
+sudo ./setup-router.sh
+```
+
+Install from git using Ansible:
+
+```bash
+sudo dnf install -y git ansible-core
+ansible-galaxy collection install -r ansible/requirements.yml
+git clone https://github.com/baxeno/home-router.git
+cd home-router/ansible
+# Update inventory file with your configuration
+ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
+```
 
