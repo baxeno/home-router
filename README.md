@@ -88,6 +88,17 @@ cd home-router/ansible
 ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
 ```
 
+## FAQ
+
+### Why is there no support for WiFi Access Point (AP) feature?
+
+It is possible to setup WiFi APs using a WiFi client USB dongle, but don't expect more then ~150MBit/s at ~1 meter range with a single WiFi client.
+WiFi APs require specific WiFi chips with many antennas and they are only sold to big COTS manufactures.
+Linux kernel upstream support of these chips are typically lacking.
+This is also why COTS routers with WiFi AP builtin don't receive updates as they are carrying large patch series that require a lot of work to rebase onto a new kernel release.
+
+Recommended action is to have seperate hardware for router and WiFi APs.
+
 ## Used tools
 
 - [Fedora Server](https://fedoraproject.org/server/) - Run server workloads on bare metal or virtual machines with the latest open source technologies curated by the Fedora Community.
