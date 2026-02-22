@@ -2,16 +2,20 @@
 
 [![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 
-This project setup a secure home router based on Linux using existing open source tools.
-It started as just a simple Bash script and evolved into a few Ansible roles.
+This project aims to setup a secure home router based on Linux with minimal maintenance using existing open source components.
+Commercially available off-the-shelf (COTS) router products typically receive very few security updates during there life-time.
+This result in them being compromised and used in large bot nets and/or as AI scraper proxies which result in slower internet speeds for home users.
 
 **Features:**
 
-- Auto update OS
-- IPv4 router
-- DHCP server
-- SSH server
-- Firewall
+- Core router features
+  - IPv4 router
+  - DHCPv4 server
+  - Firewall
+- Maintenance features
+  - Automatically system update and reboot if needed
+- Management features
+  - SSH server for local onprem management
 
 **Supported OSes:**
 
