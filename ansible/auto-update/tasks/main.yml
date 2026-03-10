@@ -4,7 +4,7 @@
 
 - name: Unsupported distributions and operating system
   fail:
-    msg: Use Fedora Server for latest hardware support and AlmaLinux for LTS on supported hardware
+    msg: "Use Fedora Server for latest hardware support and AlmaLinux for LTS on supported hardware"
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'RedHat') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_major_version|int <= 34) or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 9) or
@@ -27,9 +27,10 @@
         (ansible_os_family == 'Windows')
 
 - name: Supported Linux distribution has reached End-of-Life (EoL)
-  warn:
-    msg: Use newer version of Fedora Server
+  fail:
+    msg: "Warning: Use newer version of Fedora Server"
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_major_version|int <= 41)
+  ignore_errors: True
 
 # -----------------------------------------------------------------------------
 # dnf4: unattended auto updates based on legacy Fedora
