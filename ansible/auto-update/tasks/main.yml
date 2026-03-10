@@ -26,6 +26,11 @@
         (ansible_os_family == 'Darwin') or
         (ansible_os_family == 'Windows')
 
+- name: Supported Linux distribution has reached End-of-Life (EoL)
+  warn:
+    msg: Use newer version of Fedora Server
+  when: (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_major_version|int <= 41)
+
 # -----------------------------------------------------------------------------
 # dnf4: unattended auto updates based on legacy Fedora
 # -----------------------------------------------------------------------------
