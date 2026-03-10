@@ -6,7 +6,9 @@
   fail:
     msg: Use Fedora Server for latest hardware support and AlmaLinux for LTS on supported hardware
   when: (ansible_os_family == 'RedHat' and ansible_distribution == 'RedHat') or
-        (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 8) or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'Fedora' and ansible_distribution_major_version|int <= 34) or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS' and ansible_distribution_major_version|int <= 9) or
+        (ansible_os_family == 'RedHat' and ansible_distribution == 'AlmaLinux' and ansible_distribution_major_version|int <= 9) or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'Scientific') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'CloudLinux') or
         (ansible_os_family == 'RedHat' and ansible_distribution == 'OracleLinux') or
