@@ -3,8 +3,6 @@
 [![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 
 This project aims to setup a secure home router based on Linux with minimal maintenance using existing open source components.
-Commercially available off-the-shelf (COTS) router products typically receive very few security updates during there life-time.
-This result in them being compromised and used in large bot nets and/or as AI scraper proxies which result in slower internet speeds for home users.
 
 **Features:**
 
@@ -75,6 +73,27 @@ Linux kernel upstream support of these chips are typically lacking.
 This is also why COTS routers with WiFi AP builtin don't receive updates as they are carrying large patch series that require a lot of work to rebase onto a new kernel release.
 
 Recommended action is to have seperate hardware for router and WiFi APs.
+
+### Why not just use a common Asus, D-Link, Linksys, Netgear home router with WiFi AP?
+
+Commercially available off-the-shelf (COTS) router products typically receive very few security updates during there life-time.
+This result in them being compromised and used in large botnets and/or as AI scraper proxies which result in slower internet speeds for home users.
+
+**Examples:**
+
+- March 2026 [Authorities Disrupt SocksEscort Proxy Botnet Exploiting 369,000 IPs Across 163 Countries](https://thehackernews.com/2026/03/authorities-disrupt-socksescort-proxy.html)
+  - Criminal proxy service named SocksEscort was powered by a malware known as AVrecon.
+  - The malware targets approximately 1,200 device models manufactured by Cisco, D-Link, Hikvision, Mikrotik, NETGEAR, TP-Link, and Zyxel.
+- March 2026 [New KadNap botnet hijacks ASUS routers to fuel cybercrime proxy network](https://www.bleepingcomputer.com/news/security/new-kadnap-botnet-hijacks-asus-routers-to-fuel-cybercrime-proxy-network/)
+  - A newly discovered botnet malware called KadNap is targeting ASUS routers and other edge networking devices to turn them into proxies for malicious traffic.
+- May 2025 [Police dismantles botnet selling hacked routers as residential proxies](https://www.bleepingcomputer.com/news/security/police-dismantles-botnet-selling-hacked-routers-as-residential-proxies/)
+- May 2025 [FBI: End-of-life routers hacked for cybercrime proxy networks](https://www.bleepingcomputer.com/news/security/fbi-end-of-life-routers-hacked-for-cybercrime-proxy-networks/)
+  - End of life routers were breached by cyber actors using variants of TheMoon malware botnet.
+  - Common targets include Linksys and Cisco models.
+- December 2024[Malware botnets exploit outdated D-Link routers in recent attacks](https://www.bleepingcomputer.com/news/security/malware-botnets-exploit-outdated-d-link-routers-in-recent-attacks/)
+  - Two botnets tracked as ‘Ficora’ and ‘Capsaicin’ have recorded increased activity in targeting D-Link routers that have reached end of life or are running outdated firmware versions.
+- September 2022 [Moobot botnet is coming for your unpatched D-Link router](https://www.bleepingcomputer.com/news/security/moobot-botnet-is-coming-for-your-unpatched-d-link-router/)
+  - The Mirai malware botnet variant known as ‘MooBot’ has re-emerged in a new attack wave that started early last month, targeting vulnerable D-Link routers with a mix of old and new exploits.
 
 ## Used tools
 
