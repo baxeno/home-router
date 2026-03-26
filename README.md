@@ -83,27 +83,11 @@ Recommended action is to have seperate hardware for router and WiFi APs.
 - [firewalld](https://firewalld.org/) - A firewall daemon with D-Bus interface providing a dynamic firewall.
 - [NetworkManager](https://networkmanager.dev/) - NetworkManager is the standard Linux network configuration tool suite.
 - [Kea DHCP](https://www.isc.org/kea/) - Modern, open source DHCPv4 & DHCPv6 server.
-- [ISC DHCP](https://www.isc.org/dhcp/) - Enterprise-grade solution for IP address-configuration needs.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
-
-**Used tools (Bash only):**
-
-- [gettext-envsubst](https://www.gnu.org/software/gettext/) - Substitutes the values of environment variables.
-- [patch](https://savannah.gnu.org/projects/patch/) - The patch program applies diff files to originals.
 
 ## Development
 
 Feel free to open bug reports or feature requests in [Issues section](https://github.com/baxeno/home-router/issues).
-
-Install from git using Bash script:
-
-```bash
-sudo dnf install -y git
-git clone https://github.com/baxeno/home-router.git
-cd home-router/bash
-# Update script with interfaces and possible one of the optional parameters
-sudo ./setup-router.sh
-```
 
 Install from git using Ansible:
 
