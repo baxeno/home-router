@@ -29,7 +29,7 @@ Fedora Server is recommeded for new hardware and latest software features.
 
 - AlmaLinux OS 10 (EoL ~2035)
 - Fedora Server 43
-- Fedora Server 42
+- Fedora Server 42 (EoL 2026-05-13)
 - Fedora Server 41 (EoL 2025-11-26)
 - Fedora Server 40 (EoL 2025-05-13)
 
