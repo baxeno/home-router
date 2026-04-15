@@ -34,14 +34,14 @@
         "subnet": "{{ router_lan_subnet }}",
         "pools": [
           {
-            "pool": "${dhcp_client_pool_start} - ${dhcp_client_pool_end}"
+            "pool": "{{ dhcp_client_pool_start }} - {{ dhcp_client_pool_end }}"
           }
         ],
         "interface": "{{ router_bridge_interface }}",
         "option-data": [
           {
             "name": "routers",
-            "data": "${dhcp_router_ip}"
+            "data": "{{ dhcp_router_ip }}"
           },
           {
             "name": "domain-name-servers",
