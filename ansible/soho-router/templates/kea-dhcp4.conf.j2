@@ -1,43 +1,55 @@
 {
   "Dhcp4": {
+    "renew-timer": 3600,
+    "rebind-timer": 5400,
+    "min-valid-lifetime": 900,
+    "valid-lifetime": 7200,
+    "max-valid-lifetime": 28800,
     "interfaces-config": {
       "interfaces": [
-        "{{ BRIDGE_INTERFACE }}"
+        "{{ router_bridge_interface }}"
       ]
     },
     "control-socket": {
       "socket-type": "unix",
-      "socket-name": "/run/kea/kea4-ctrl-socket"
+      "socket-name": "kea4-ctrl-socket"
     },
     "lease-database": {
       "type": "memfile",
       "lfc-interval": 3600,
       "persist": true,
-      "name": "/tmp/dhcp4.leases"
+      "name": "/tmp/kea-leases4.csv"
     },
-    "valid-lifetime": 3600,
-    "max-valid-lifetime": 28800,
+    "expired-leases-processing": {
+      "reclaim-timer-wait-time": 60,
+      "flush-reclaimed-timer-wait-time": 120,
+      "hold-reclaimed-time": 3600,
+      "max-reclaim-leases": 100,
+      "max-reclaim-time": 250,
+      "unwarned-reclaim-cycles": 5
+    },
     "subnet4": [
       {
         "id": 1,
-        "subnet": "${NETWORK}/${PREFIX}",
+        "subnet": "{{ router_lan_subnet }}",
         "pools": [
           {
-            "pool": "${DHCP_LOW} - ${DHCP_HIGH}"
+            "pool": "${dhcp_client_pool_start} - ${dhcp_client_pool_end}"
           }
         ],
+        "interface": "{{ router_bridge_interface }}",
         "option-data": [
           {
             "name": "routers",
-            "data": "${ADDRESS}"
+            "data": "${dhcp_router_ip}"
           },
           {
             "name": "domain-name-servers",
-            "data": "${DNS_SERVER_PRIMARY}, ${DNS_SERVER_SECONDARY}"
+            "data": "{{ dhcp_primary_dns }}, {{ dhcp_secondary_dns }}"
           },
           {
             "name": "domain-name",
-            "data": "${DOMAIN_NAME}"
+            "data": "{{ router_domain }}"
           }
         ]
       }
