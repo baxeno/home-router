@@ -114,6 +114,10 @@ The following open-source software components are used.
 - [Kea DHCP](https://www.isc.org/kea/) - Modern, open source DHCPv4 & DHCPv6 server.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
 
+**Documentation links:**
+
+- [Kea DHCPv4 Server configuration](https://kea.readthedocs.io/en/latest/arm/dhcp4-srv.html#dhcpv4-server-configuration)
+
 ## Development
 
 Feel free to open bug reports or feature requests in [Issues section](https://github.com/baxeno/home-router/issues).
