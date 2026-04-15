@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 
-This project aims to setup a secure home router based on Linux with minimal maintenance using existing open source components.
+This project aims to setup a secure home router appliance based on Linux with minimal maintenance using existing open source components.
 
 **Features:**
 
@@ -104,6 +104,9 @@ This result in them being compromised and used in large botnets and/or as AI scr
 
 ## Used tools
 
+The following open-source software components are used.
+
+- [AlmaLinux OS](https://almalinux.org/get-almalinux/) - An Open Source, community owned and governed, forever-free enterprise Linux distribution, focused on long-term stability, providing a robust production-grade platform.
 - [Fedora Server](https://fedoraproject.org/server/) - Run server workloads on bare metal or virtual machines with the latest open source technologies curated by the Fedora Community.
 - [DNF automatic](https://github.com/rpm-software-management/dnf) - Package manager - automated upgrades.
 - [firewalld](https://firewalld.org/) - A firewall daemon with D-Bus interface providing a dynamic firewall.
