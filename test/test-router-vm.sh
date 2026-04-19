@@ -35,5 +35,5 @@ systemctl status --no-pager -l "${KEA_SERVICE}"
 print_header "${KEA_SERVICE} leases"
 cat "${KEA_LEASES}" | column -s, -t
 
-echo -e "${GREEN}Completed check!{NC}"
+echo -e "${GREEN}Completed check${NC}"
 
