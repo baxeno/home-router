@@ -25,7 +25,7 @@ print_header()
 }
 
 print_header "${KEA_SERVICE} status"
-if systemctl is-active "${KEA_SERVICE}"; then
+if systemctl is-active "${KEA_SERVICE}" > /dev/null; then
     echo -e "${KEA_SERVICE} [${GREEN}OK${NC}]"
 else
     echo -e "${KEA_SERVICE} [${RED}FAILED${NC}]"
