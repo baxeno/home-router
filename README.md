@@ -133,3 +133,8 @@ cd home-router/ansible
 ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
 ```
 
+Show Ansible facts for localhost:
+
+```bash
+ansible localhost -m ansible.builtin.setup
+```
