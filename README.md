@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 
-This project aims to setup a secure home router appliance based on Linux with minimal maintenance using existing open source components.
+This project aims to setup a secure home router appliance based on a standard Linux distribution (AlmaLinux or Fedora) with minimal maintenance using existing open source components.
 
 **Features:**
 
@@ -79,7 +79,7 @@ WiFi APs require specific WiFi chips with many antennas and they are only sold t
 Linux kernel upstream support of these chips are typically lacking.
 This is also why COTS routers with WiFi AP builtin don't receive updates as they are carrying large patch series that require a lot of work to rebase onto a new kernel release.
 
-Recommended action is to have seperate hardware for router and WiFi APs.
+Recommended action is to have separate hardware for router and WiFi APs.
 
 ### Why not just use a common Asus, D-Link, Linksys, Netgear home router with WiFi AP?
 
