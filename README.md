@@ -68,7 +68,7 @@ ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
 
 Ansible inventory configuration:
 
-`router_lan_subnet` and `dhcp_router_ip` variables are automatically calculated based on `router_lan_network`.
+`router_lan_subnet` and `dhcp_router_ip` variables are automatically calculated based on `router_lan_network`, but can still be overridden in an inventory file.
 
 ## FAQ
 
