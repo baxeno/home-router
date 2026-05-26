@@ -72,6 +72,23 @@ Ansible inventory configuration:
 
 ## FAQ
 
+### What is the best DNS resolver option?
+
+It depends on where in the world you are located, but a general recommendation is to use a DNS resovler that filters domains that are classified as malicious.
+
+- DNS4EU For Public - Protective resolution
+  - Primary DNS: 86.54.11.1
+  - Secondary DNS: 86.54.11.201
+  - [DNS4EU for Public: Resolver Options and IP addresses](https://joindns4.eu/for-public#resolver-options)
+- Cloudflare (1.1.1.1) for Families - Block malware
+  - Primary DNS: 1.1.1.2
+  - Secondary DNS: 1.0.0.3
+  - [Cloudflare 1.1.1.1 (DNS resolver) Set up](https://developers.cloudflare.com/1.1.1.1/setup/)
+- Quad9 (9.9.9.9) - Secure
+  - Primary DNS: 9.9.9.9
+  - Secondary DNS: 149.112.112.112
+  - [Quad9 Services](https://docs.quad9.net/services/)
+
 ### Why is there no support for WiFi Access Point (AP) feature?
 
 It is possible to setup WiFi APs using a WiFi client USB dongle, but don't expect more then ~150MBit/s at ~1 meter range with a single WiFi client.
