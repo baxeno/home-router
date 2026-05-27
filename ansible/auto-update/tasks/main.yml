@@ -2,36 +2,6 @@
 ---
 # tasks file for auto-update
 
-- name: Unsupported distributions and operating system
-  fail:
-    msg: "Use Fedora Server for latest hardware support and AlmaLinux for LTS on supported hardware"
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'RedHat') or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 34) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'CentOS' and ansible_facts['distribution_major_version']|int <= 9) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'AlmaLinux' and ansible_facts['distribution_major_version']|int <= 9) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Scientific') or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'CloudLinux') or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'OracleLinux') or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Amazon') or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'XenServer') or
-        (ansible_facts['os_family'] == 'Debian') or
-        (ansible_facts['os_family'] == 'Suse') or
-        (ansible_facts['os_family'] == 'Gentoo') or
-        (ansible_facts['os_family'] == 'Archlinux') or
-        (ansible_facts['os_family'] == 'Mandrake') or
-        (ansible_facts['os_family'] == 'HP-UX') or
-        (ansible_facts['os_family'] == 'AIX') or
-        (ansible_facts['os_family'] == 'Solaris') or
-        (ansible_facts['os_family'] == 'FreeBSD') or
-        (ansible_facts['os_family'] == 'Darwin') or
-        (ansible_facts['os_family'] == 'Windows')
-
-- name: Supported Linux distribution has reached End-of-Life (EoL)
-  fail:
-    msg: "Warning: Use newer version of Fedora Server"
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 41)
-  ignore_errors: True
-
 # -----------------------------------------------------------------------------
 # dnf4: unattended auto updates based on legacy Fedora
 # -----------------------------------------------------------------------------

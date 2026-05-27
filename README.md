@@ -143,7 +143,6 @@ Install from git using Ansible:
 
 ```bash
 sudo dnf install -y git ansible-core
-ansible-galaxy collection install -r ansible/requirements.yml
 git clone https://github.com/baxeno/home-router.git
 cd home-router/ansible
 # Update inventory file with your configuration

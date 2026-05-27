@@ -3,5 +3,6 @@
 - hosts: routers
   gather_facts: true
   roles:
+    - os-requirements
     - auto-update
     - soho-router

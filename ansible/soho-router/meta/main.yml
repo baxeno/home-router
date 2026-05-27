@@ -1,4 +1,7 @@
 #SPDX-License-Identifier: Apache-2.0
+---
+# meta file for soho-router
+
 galaxy_info:
   author: Bruno Thomsen
   description: Setup router based on Linux, systemd, Kea DHCP, NetworkManager and firewalld.
@@ -22,4 +25,5 @@ galaxy_info:
 
   galaxy_tags: []
 
-dependencies: []
+dependencies:
+  - role: os-requirements

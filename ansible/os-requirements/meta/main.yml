@@ -1,10 +1,10 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# meta file for auto-update
+# meta file for os-requirements
 
 galaxy_info:
   author: Bruno Thomsen
-  description: Setup DNF4/DNF5 based weekly automatic updates on host.
+  description: Check OS requirements and install required Ansible dependencies
 
   issue_tracker_url: https://github.com/baxeno/home-router/issues
 
@@ -25,5 +25,4 @@ galaxy_info:
 
   galaxy_tags: []
 
-dependencies:
-  - role: os-requirements
+dependencies: []
