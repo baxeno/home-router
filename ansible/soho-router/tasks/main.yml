@@ -48,33 +48,6 @@
     mode: '0644'
 
 # -----------------------------------------------------------------------------
-# Setup DHCPv4 server
-# -----------------------------------------------------------------------------
-- name: Install ISC Kea DHCPv4/DHCPv6 server
-  become: true
-  ansible.builtin.dnf:
-    name: kea
-    state: present
-
-- name: Configure ISC Kea DHCPv4 server based on template
-  become: true
-  ansible.builtin.template:
-    src: templates/kea-dhcp4.conf.j2
-    dest: /etc/kea/kea-dhcp4.conf
-    owner: root
-    group: kea
-    mode: '0640'
-  notify:
-    - Restart Kea DHCPv4 service
-
-- name: Enable ISC Kea DHCPv4 systemd service
-  become: true
-  ansible.builtin.systemd_service:
-    name: kea-dhcp4.service
-    state: started
-    enabled: true
-
-# -----------------------------------------------------------------------------
 # Setup interfaces and bridge in NetworkManager
 # -----------------------------------------------------------------------------
 - name: Load kernel modules
@@ -122,6 +95,33 @@
     master: "{{ router_bridge_interface }}"
     zone: internal
     state: present
+
+# -----------------------------------------------------------------------------
+# Setup DHCPv4 server
+# -----------------------------------------------------------------------------
+- name: Install ISC Kea DHCPv4/DHCPv6 server
+  become: true
+  ansible.builtin.dnf:
+    name: kea
+    state: present
+
+- name: Configure ISC Kea DHCPv4 server based on template
+  become: true
+  ansible.builtin.template:
+    src: templates/kea-dhcp4.conf.j2
+    dest: /etc/kea/kea-dhcp4.conf
+    owner: root
+    group: kea
+    mode: '0640'
+  notify:
+    - Restart Kea DHCPv4 service
+
+- name: Enable ISC Kea DHCPv4 systemd service
+  become: true
+  ansible.builtin.systemd_service:
+    name: kea-dhcp4.service
+    state: started
+    enabled: true
 
 # -----------------------------------------------------------------------------
 # Configure allowed IP traffic in firewalld
