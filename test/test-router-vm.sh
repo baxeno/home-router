@@ -45,7 +45,7 @@ print_firewall_zone()
 {
     local zone="${1}"
     print_header "Firewall zone=${zone}"
-    firewall-cmd --zone=external --list-all
+    firewall-cmd --zone="${zone}" --list-all
 
 }
 
