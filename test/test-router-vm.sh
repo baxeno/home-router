@@ -24,16 +24,36 @@ print_header()
     echo -e "${GRAY}----------------------------------------${NC}"
 }
 
-print_header "${KEA_SERVICE} status"
-if systemctl is-active "${KEA_SERVICE}" > /dev/null; then
-    echo -e "${KEA_SERVICE} [${GREEN}OK${NC}]"
-else
-    echo -e "${KEA_SERVICE} [${RED}FAILED${NC}]"
-fi
-systemctl status --no-pager -l "${KEA_SERVICE}"
+print_dhcp_server_status()
+{
+    print_header "${KEA_SERVICE} status"
+    systemctl status --no-pager -l "${KEA_SERVICE}"
+    if systemctl is-active "${KEA_SERVICE}" > /dev/null; then
+        echo -e "${KEA_SERVICE} [${GREEN}OK${NC}]"
+    else
+        echo -e "${KEA_SERVICE} [${RED}FAILED${NC}]"
+    fi
+}
 
-print_header "${KEA_SERVICE} leases"
-cat "${KEA_LEASES}" | column -s, -t
+print_dhcp_server_leases()
+{
+    print_header "${KEA_SERVICE} leases"
+    cat "${KEA_LEASES}" | column -s, -t
+}
+
+print_firewall_zone()
+{
+    local zone="${1}"
+    print_header "Firewall zone=${zone}"
+    firewall-cmd --zone=external --list-all
+
+}
+
+# Tests
+print_dhcp_server_status
+print_dhcp_server_leases
+print_firewall_zone "external"
+print_firewall_zone "internal"
 
 echo -e "${GREEN}Completed check${NC}"
 
