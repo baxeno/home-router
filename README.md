@@ -28,10 +28,10 @@ AlmaLinux is recommended for supported hardware, as it comes with a 10-year life
 Fedora Server is recommeded for new hardware and latest software features.
 
 - AlmaLinux OS 10 (EoL ~2035)
-- Fedora Server 43
+- Fedora Server 44 (EoL 2027-05-19)
+- Fedora Server 43 (EoL 2026-12-02)
 - Fedora Server 42 (EoL 2026-05-13)
 - Fedora Server 41 (EoL 2025-11-26)
-- Fedora Server 40 (EoL 2025-05-13)
 
 > Migrate installations before OS reach End of Life (EoL)
 > [Fedora End of Life Releases](https://docs.fedoraproject.org/en-US/releases/eol/)
