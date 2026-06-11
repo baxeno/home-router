@@ -19,4 +19,4 @@ dhcp_primary_dns: "86.54.11.1"
 dhcp_secondary_dns: "86.54.11.201"
 
 dhcp_client_pool_start: "192.168.10.100"
-dhcp_client_pool_end: "192.168.10.200"
+dhcp_client_pool_end: "192.168.10.250"

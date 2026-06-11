@@ -26,4 +26,3 @@ all:
 
           dhcp_client_pool_start: "192.0.2.100"
           dhcp_client_pool_end: "192.0.2.250"
-
