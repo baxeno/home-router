@@ -14,9 +14,9 @@ router_lan_subnet: "{{ router_lan_network | ansible.utils.ipaddr('network') }}/{
 
 dhcp_router_ip: "{{ router_lan_network | ansible.utils.ipaddr('address') }}"
 
-# Cloudflare 1.1.1.1 for Families - Block malware
-dhcp_primary_dns: "1.1.1.2"
-dhcp_secondary_dns: "1.0.0.2"
+# DNS4EU For Public - Protective Resolution
+dhcp_primary_dns: "86.54.11.1"
+dhcp_secondary_dns: "86.54.11.201"
 
 dhcp_client_pool_start: "192.168.10.100"
 dhcp_client_pool_end: "192.168.10.200"
