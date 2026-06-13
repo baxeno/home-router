@@ -139,12 +139,19 @@ Feel free to open bug reports or feature requests in [Issues section](https://gi
 Install from git using Ansible:
 
 ```bash
+# Install basic Ansible host dependencies
 sudo dnf install -y git ansible-core
+
+# Download latest development version
 git clone https://github.com/baxeno/home-router.git
+
 cd home-router/ansible
-# Update inventory file with your configuration
-ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
+ansible-playbook -K -i inventory/localhost.yml requirements.yml
+# Update `inventory/localhost.yml` with interfaces and maybe some of the optional parameters
+ansible-playbook -K -i inventory/localhost.yml home-router.yml
 ```
+
+> Note: It's only necessary to run `requirements.yml` playbook first time on router home.
 
 Show Ansible facts for localhost:
 
