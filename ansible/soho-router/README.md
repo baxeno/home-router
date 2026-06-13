@@ -1,31 +1,46 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Setup router based on Linux, systemd, Kea DHCP, NetworkManager and firewalld.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Must be run on a supported OS, see `os-requirements` role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables need to be set in inventory file:
+- `router_wan_interface`: Device name of WAN network interface (internet).
+- `router_lan_interface`: Device name of LAN network interface (home network).
+
+Device name (`<DEVICE>`) of network interfaces can be found with `nmcli` which output `<DEVICE>: connected on <NAME>`.
+
+The following variables can be set in inventory file:
+- `router_bridge_interface`: Interface is used for routing packages between `router_lan_interface` and `router_wan_interface`.
+- `router_hostname`: Hostname of router when accessing it from LAN (home) network.
+- `router_domain`: ICANN has created .internal TLD for private use. Unsupported at the moment.
+- `router_lan_network`: Contain IP address for router LAN interface and home network size in CIDR Subnet Mask Notation.
+- `dhcp_primary_dns`: Primary DNS server given to DHCP clients.
+- `dhcp_secondary_dns`: Secondary DNS server given to DHCP clients.
+- `dhcp_client_pool_start`: First IP address given to DHCP clients.
+- `dhcp_client_pool_end`: Last IP address given to DHCP clients.
+
+The following variables are automatically calculated based on other variables.
+- `router_lan_subnet`: Calculated based on `router_lan_network`.
+- `dhcp_router_ip`: Calculated based on `router_lan_network`.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The following role must be run before this:
+- `os-requirements`
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+See `home-router.yml`
 
 License
 -------
@@ -36,4 +51,3 @@ Author Information
 ------------------
 
 https://github.com/baxeno/home-router
-
