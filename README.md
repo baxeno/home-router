@@ -32,13 +32,10 @@ Fedora Server is recommeded for new hardware and latest software features.
 - Fedora Server 43 (EoL 2026-12-02)
 - Fedora Server 42 (EoL 2026-05-13)
 - Fedora Server 41 (EoL 2025-11-26)
+- CentOS Stream 10 (EoL 2030-05-31)
 
 > Migrate installations before OS reach End of Life (EoL)
 > [Fedora End of Life Releases](https://docs.fedoraproject.org/en-US/releases/eol/)
-
-**WIP OSes:**
-
-- CentOS Stream 10 (WIP, EoL 2030-05-31)
 
 ## Install
 
