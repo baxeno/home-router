@@ -10,18 +10,21 @@ galaxy_info:
 
   license: Apache-2.0
 
-  min_ansible_version: 2.16
+  min_ansible_version: "2.16"
 
   platforms:
-  - name: Fedora
-    versions:
-    - 41
-    - 42
-    - 43
-    - 44
-  - name: AlmaLinux
-    versions:
-    - 10
+    - name: "Fedora"
+      versions:
+        - "41"
+        - "42"
+        - "43"
+        - "44"
+    - name: "AlmaLinux"
+      versions:
+        - "10"
+    - name: "CentOS"
+      versions:
+        - "10"
 
   galaxy_tags: []
 
