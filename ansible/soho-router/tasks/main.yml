@@ -33,8 +33,8 @@
   fail:
     msg: Missing interfaces in configuration, run 'nmcli' to discover valid interface names.
   when: (router_wan_interface | length == 0) or
-        (router_bridge_interface | length == 0) or
-        (router_lan_interface | length == 0)
+    (router_bridge_interface | length == 0) or
+    (router_lan_interface | length == 0)
 
 # -----------------------------------------------------------------------------
 # Setup basic host configuration and SSH server
@@ -53,7 +53,7 @@
     dest: /etc/ssh/sshd_config.d/08-home-router-sshd.conf
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
 
 # -----------------------------------------------------------------------------
 # Setup interfaces and bridge in NetworkManager
@@ -65,7 +65,7 @@
     dest: /etc/modules-load.d/10-kernel-router.conf
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
 
 - name: Setup WAN interface ({{ router_wan_interface }})
   become: true
@@ -120,7 +120,7 @@
     dest: /etc/kea/kea-dhcp4.conf
     owner: root
     group: kea
-    mode: '0640'
+    mode: "0640"
   notify:
     - Restart Kea DHCPv4 service
 
