@@ -146,7 +146,6 @@ sudo dnf install -y git ansible-core
 git clone https://github.com/baxeno/home-router.git
 
 cd home-router/ansible
-ansible-playbook -K -i inventory/localhost.yml requirements.yml
 # Update `inventory/localhost.yml` with interfaces and maybe some of the optional parameters
 ansible-playbook -K -i inventory/localhost.yml home-router.yml
 ```
