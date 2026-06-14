@@ -3,12 +3,17 @@
 # tasks file for soho-router
 
 # -----------------------------------------------------------------------------
-# Check configuration parameters
+# Calculate configuration parameters
 # -----------------------------------------------------------------------------
-- name: Configuration parameters
+- name: Calculate configuration parameters
   set_fact:
     router_lan_subnet: "{{ router_lan_network | ansible.utils.ipaddr('network') }}/{{ router_lan_network | ansible.utils.ipaddr('prefix') }}"
     dhcp_router_ip: "{{ router_lan_network | ansible.utils.ipaddr('address') }}"
+
+# -----------------------------------------------------------------------------
+# Check configuration parameters
+# -----------------------------------------------------------------------------
+- name: Check configuration parameters
   ansible.builtin.debug:
     msg:
       - "router_hostname: {{ router_hostname }}"
