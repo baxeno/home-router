@@ -6,6 +6,9 @@
 # Check configuration parameters
 # -----------------------------------------------------------------------------
 - name: Configuration parameters
+  set_fact:
+    router_lan_subnet: "{{ router_lan_network | ansible.utils.ipaddr('network') }}/{{ router_lan_network | ansible.utils.ipaddr('prefix') }}"
+    dhcp_router_ip: "{{ router_lan_network | ansible.utils.ipaddr('address') }}"
   ansible.builtin.debug:
     msg:
       - "router_hostname: {{ router_hostname }}"
