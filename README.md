@@ -150,8 +150,6 @@ cd home-router/ansible
 ansible-playbook -K -i inventory/localhost.yml home-router.yml
 ```
 
-> Note: It's only necessary to run `requirements.yml` playbook first time on router home.
-
 Show Ansible facts for localhost:
 
 ```bash
