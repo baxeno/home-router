@@ -50,17 +50,16 @@ Fedora Server is recommeded for new hardware and latest software features.
 **Released version:**
 
 ```bash
-# Download and extract latest release
-curl https://codeload.github.com/baxeno/home-router/tar.gz/refs/tags/v0.3.0 -o home-router-v0.3.0.tar.gz
-tar -xvzf home-router-v0.3.0.tar.gz
-cd home-router-0.3.0/ansible
-
 # Install basic Ansible host dependencies
 sudo dnf install -y ansible-core
-ansible-galaxy collection install -r requirements.yml
 
+# Download and extract latest release
+curl https://codeload.github.com/baxeno/home-router/tar.gz/refs/tags/v0.4.0 -o home-router-v0.4.0.tar.gz
+tar -xvzf home-router-v0.4.0.tar.gz
+
+cd home-router-0.4.0/ansible
 # Update `inventory/localhost.yml` with interfaces and maybe some of the optional parameters
-ansible-playbook --check -K -i inventory/localhost.yml home-router.yml
+ansible-playbook -K -i inventory/localhost.yml home-router.yml
 ```
 
 Ansible inventory configuration:
