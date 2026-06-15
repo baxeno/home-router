@@ -1,0 +1,26 @@
+#SPDX-License-Identifier: Apache-2.0
+---
+all:
+  children:
+    routers:
+      hosts:
+        localhost:
+          ansible_connection: local
+          ansible_python_interpreter: "{{ansible_playbook_python}}"
+
+          # Tuxedo Nano Pro - Gen12 (AMD Ryzen 5 7535U)
+          # Realtek RTL8125 2.5GbE
+          router_wan_interface: "enp1s0"
+          # Realtek RTL8111/8168/8211/8411
+          router_lan_interface: "enp2s0f0"
+
+          router_hostname: "tuxedo"
+          router_domain: "tux.internal"
+          router_lan_network: "192.168.82.82/24"
+
+          # DNS4EU For Public - Protective Resolution
+          dhcp_primary_dns: "86.54.11.1"
+          dhcp_secondary_dns: "86.54.11.201"
+
+          dhcp_client_pool_start: "192.168.82.100"
+          dhcp_client_pool_end: "192.168.82.199"
