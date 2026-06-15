@@ -1,3 +1,7 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
 # handlers file for os-requirements
+
+- name: New collections installed
+  ansible.builtin.fail:
+    msg: "Ansible collections installed; rerun playbook to continue."

@@ -48,15 +48,21 @@
   ansible.builtin.dnf:
     name: ansible-collection-community-general
     state: present
+  notify:
+    - New collections installed
 
 - name: Install Ansible collection (POSIX platforms) for firewalld configuration
   become: true
   ansible.builtin.dnf:
     name: ansible-collection-ansible-posix, python3-firewall
     state: present
+  notify:
+    - New collections installed
 
 - name: Install Ansible collection (Utilities) for management and manipulation of configuration data
   become: true
   ansible.builtin.dnf:
     name: ansible-collection-ansible-utils, python3-netaddr
     state: present
+  notify:
+    - New collections installed
