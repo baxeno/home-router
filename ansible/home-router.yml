@@ -6,6 +6,8 @@
       ansible.builtin.include_role:
         name: os-requirements
 
+- hosts: routers
+  tasks:
     - name: Setup router
       ansible.builtin.include_role:
         name: "{{ item }}"
