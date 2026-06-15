@@ -8,11 +8,12 @@ Requirements
 
 Fedora 41, 42, 43, 44
 AlmaLinux 10
+CentOS Stream 10
 
 Role Variables
 --------------
 
-This roles does not have any settable variables.
+None.
 
 Dependencies
 ------------
@@ -38,4 +39,3 @@ Author Information
 ------------------
 
 https://github.com/baxeno/home-router
-

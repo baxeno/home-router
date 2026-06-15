@@ -10,8 +10,9 @@
   ansible.builtin.dnf:
     name: dnf-automatic
     state: present
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
 
 - name: Directory for dnf-automatic-install override (dnf4)
   become: true
@@ -21,8 +22,9 @@
     group: root
     state: directory
     mode: 0755
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
 
 - name: Enable weekly OS auto updates (dnf4)
   become: true
@@ -32,17 +34,19 @@
     owner: root
     group: root
     mode: 0444
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
 
 - name: Reboot after updates if needed (dnf4)
   become: true
   ansible.builtin.lineinfile:
     path: /etc/dnf/automatic.conf
-    regexp: '^reboot = '
-    line: 'reboot = when-changed'
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
+    regexp: "^reboot = "
+    line: "reboot = when-changed"
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
 
 - name: Enable automatic updates (dnf4)
   become: true
@@ -50,8 +54,9 @@
     name: dnf-automatic-install.timer
     state: started
     enabled: true
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
 
 # -----------------------------------------------------------------------------
 # dnf5: unattended auto updates based on modern Fedora
@@ -62,8 +67,9 @@
     name: dnf5-plugin-automatic, libcurl-full
     allowerasing: true
     state: present
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
 
 - name: Directory for dnf5-automatic override (dnf5)
   become: true
@@ -73,8 +79,9 @@
     group: root
     state: directory
     mode: 0755
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
 
 - name: Weekly OS auto updates (dnf5)
   become: true
@@ -84,8 +91,9 @@
     owner: root
     group: root
     mode: 0644
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
 
 - name: Reboot after updates if needed (dnf5)
   become: true
@@ -95,8 +103,9 @@
     owner: root
     group: root
     mode: 0644
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
 
 - name: Enable automatic updates (dnf5)
   become: true
@@ -104,8 +113,9 @@
     name: dnf5-automatic.timer
     state: started
     enabled: true
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
-        (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
 
 # -----------------------------------------------------------------------------
 # Make sure system is up-to-date
@@ -117,4 +127,3 @@
     allowerasing: true
     state: latest
   when: ansible_facts['os_family'] == 'RedHat'
-
