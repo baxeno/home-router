@@ -1,13 +1,14 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# Bootstrap soho-router role host requirements and validate OS requirements
 - hosts: routers
-  gather_facts: true
-  roles:
-    - os-requirements
+  tasks:
+    - name: Bootstrap host requirements and check OS requirements
+      ansible.builtin.include_role:
+        name: os-requirements
 
-- hosts: routers
-  gather_facts: true
-  roles:
-    - auto-update
-    - soho-router
+    - name: Setup router
+      ansible.builtin.include_role:
+        name: "{{ item }}"
+      loop:
+        - auto-update
+        - soho-router
