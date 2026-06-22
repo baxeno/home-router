@@ -101,6 +101,9 @@ This result in them being compromised and used in large botnets and/or as AI scr
 
 **Examples:**
 
+- June 2026 [AryStinger Malware Infects 4,300 Legacy Routers to Build Reconnaissance Proxy Network](https://thehackernews.com/2026/06/arystinger-malware-infects-4300-legacy.html)
+  - The campaign goes after routers built on Realtek's RTL819X chips, hardware that was current around 2012 to 2015.
+  - The infected pool is mostly D-Link, with the DIR-850L alone making up about 75 percent.
 - March 2026 [Authorities Disrupt SocksEscort Proxy Botnet Exploiting 369,000 IPs Across 163 Countries](https://thehackernews.com/2026/03/authorities-disrupt-socksescort-proxy.html)
   - Criminal proxy service named SocksEscort was powered by a malware known as AVrecon.
   - The malware targets approximately 1,200 device models manufactured by Cisco, D-Link, Hikvision, Mikrotik, NETGEAR, TP-Link, and Zyxel.
