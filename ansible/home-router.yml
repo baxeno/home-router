@@ -10,7 +10,9 @@
   tasks:
     - name: Setup router
       ansible.builtin.include_role:
-        name: "{{ item }}"
+        name: "{{ role }}"
       loop:
         - auto-update
         - soho-router
+      loop_control:
+        loop_var: role
