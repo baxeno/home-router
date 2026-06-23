@@ -178,11 +178,13 @@
   become: true
   ansible.posix.firewalld:
     zone: external
-    service: "{{ item }}"
+    service: "{{ ext_unused_service }}"
     permanent: true
     state: disabled
   loop:
     - ssh
+  loop_control:
+    loop_var: ext_unused_service
   notify:
     - Restart firewalld service
 
@@ -190,13 +192,15 @@
   become: true
   ansible.posix.firewalld:
     zone: internal
-    service: "{{ item }}"
+    service: "{{ int_unused_service }}"
     permanent: true
     state: disabled
   loop:
     - samba-client
     - cockpit
     - mdns
+  loop_control:
+    loop_var: int_unused_service
   notify:
     - Restart firewalld service
 
@@ -204,11 +208,13 @@
   become: true
   ansible.posix.firewalld:
     zone: internal
-    service: "{{ item }}"
+    service: "{{ int_used_service }}"
     permanent: true
     state: enabled
   loop:
     - dhcp
     - ssh
+  loop_control:
+    loop_var: int_used_service
   notify:
     - Restart firewalld service
