@@ -13,14 +13,7 @@ This project aims to setup a secure home router appliance based on a standard Li
 - Maintenance features
   - Automatically system update and reboot if needed
 - Management features
-  - SSH server for local onprem management
-
-**Roadmap:**
-
-- IPv6-Mostly router
-  - [RFC 8925 IPv6-Only Preferred Option for DHCPv4 (option 108)](https://www.rfc-editor.org/rfc/rfc8925.txt)
-  - [RFC 6877 464XLAT](https://www.rfc-editor.org/rfc/rfc6877.txt)
-  - [RFC 8781 PREF64 option](https://www.rfc-editor.org/rfc/rfc8781.txt)
+  - SSH server for local on-prem management
 
 **Supported OSes:**
 
