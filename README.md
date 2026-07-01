@@ -101,6 +101,9 @@ This result in them being compromised and used in large botnets and/or as AI scr
 
 **Examples:**
 
+- June 2026 [RustDuck Botnet Rebuilds in Rust to Hijack Routers and Servers for DDoS](https://thehackernews.com/2026/06/rustduck-botnet-rebuilds-in-rust-to.html)
+  - RustDuck is hijacking home routers, IP cameras, Android boxes, and poorly secured servers.
+  - Huawei, D-Link and Totolink routers.
 - June 2026 [AryStinger Malware Infects 4,300 Legacy Routers to Build Reconnaissance Proxy Network](https://thehackernews.com/2026/06/arystinger-malware-infects-4300-legacy.html)
   - The campaign goes after routers built on Realtek's RTL819X chips, hardware that was current around 2012 to 2015.
   - The infected pool is mostly D-Link, with the DIR-850L alone making up about 75 percent.
