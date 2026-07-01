@@ -1,6 +1,6 @@
 # Home router based on AlmaLinux or Fedora Server
 
-[![GitHub license](https://img.shields.io/github/license/baxeno/home-router)](https://github.com/baxeno/home-router/blob/main/LICENSE)
+![GitHub License](https://img.shields.io/github/license/baxeno/home-router?cacheSeconds=86400&link=https%3A%2F%2Fgithub.com%2Fbaxeno%2Fhome-router%2Fblob%2Fmain%2FLICENSE)
 
 This project aims to setup a secure home router appliance based on a standard Linux distribution (AlmaLinux or Fedora) with minimal maintenance using existing open source components.
 
