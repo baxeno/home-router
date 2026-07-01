@@ -21,6 +21,7 @@ The following variables can be set in inventory file:
 - `router_bridge_interface`: Interface is used for routing packages between `router_lan_interface` and `router_wan_interface`.
 - `router_hostname`: Hostname of router when accessing it from LAN (home) network.
 - `router_domain`: ICANN has created .internal TLD for private use. Unsupported at the moment.
+- `router_admin_public_key`: SSH public key for administrator. Support `ssh-ed25519`.
 - `router_lan_network`: Contain IP address for router LAN interface and home network size in CIDR Subnet Mask Notation.
 - `dhcp_primary_dns`: Primary DNS server given to DHCP clients.
 - `dhcp_secondary_dns`: Secondary DNS server given to DHCP clients.

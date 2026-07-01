@@ -55,6 +55,13 @@
     group: root
     mode: "0644"
 
+- name: Set SSH authorized key for admin ({{ ansible_user_id }})
+  ansible.posix.authorized_key:
+    user: "{{ ansible_user_id }}"
+    state: present
+    key: "{{ router_admin_public_key }}"
+  when: (router_admin_public_key | length > 64)
+
 # -----------------------------------------------------------------------------
 # Setup interfaces and bridge in NetworkManager
 # -----------------------------------------------------------------------------

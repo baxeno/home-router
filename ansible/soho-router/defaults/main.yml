@@ -9,6 +9,8 @@ router_bridge_interface: "br82"
 router_hostname: "home-router"
 router_domain: "tux.internal"
 
+router_admin_public_key: ""
+
 router_lan_network: "192.168.10.1/24"
 
 # DNS4EU For Public - Protective Resolution
