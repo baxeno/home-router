@@ -16,6 +16,9 @@ all:
 
           router_hostname: "tuxedo"
           router_domain: "tux.internal"
+
+          router_admin_public_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINIQVLQKS/yN8XMspNw+JsVbfmDUa7y9L0T/zzr4tv4V"
+
           router_lan_network: "192.168.82.82/24"
 
           # DNS4EU For Public - Protective Resolution
