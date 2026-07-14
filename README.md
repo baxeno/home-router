@@ -3,7 +3,10 @@
 [![GitHub License](https://img.shields.io/github/license/baxeno/home-router?style=for-the-badge&cacheSeconds=86400)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/baxeno/home-router?sort=semver&display_name=tag&style=for-the-badge&cacheSeconds=86400)](https://github.com/baxeno/home-router/releases)
 
-This project aims to setup a secure home router appliance based on a standard Linux distribution (AlmaLinux or Fedora) with minimal maintenance using existing open source components.
+Setup a secure router for home or small office use on a modern open-source foundation using Linux distributions like AlmaLinux, Fedora or CentOS Stream.
+It require no data sharing or persistent cloud connection for being eligible to receive software updates.
+AlmaLinux is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
+Fedora Server is recommeded for new hardware and latest software features.
 
 **Features:**
 
@@ -17,9 +20,6 @@ This project aims to setup a secure home router appliance based on a standard Li
   - SSH server for local on-prem management
 
 **Supported OSes:**
-
-AlmaLinux is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
-Fedora Server is recommeded for new hardware and latest software features.
 
 - AlmaLinux OS 10 (EoL ~2035)
 - Fedora Server 44 (EoL 2027-05-19)
