@@ -7,7 +7,7 @@
 Setup a secure router for home or small office use on a modern open-source foundation using Linux distributions like AlmaLinux, Fedora or CentOS Stream.
 It require no data sharing or persistent cloud connection for being eligible to receive software updates.
 AlmaLinux is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
-Fedora Server is recommeded for new hardware and latest software features.
+Fedora Server is recommended for new hardware and latest software features.
 
 **Features:**
 
