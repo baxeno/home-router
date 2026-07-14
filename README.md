@@ -38,8 +38,6 @@ Fedora Server is recommeded for new hardware and latest software features.
 - Install [Fedora Server](https://fedoraproject.org/server/) or [AlmaLinux](https://almalinux.org/get-almalinux/) on bare metal router hardware
   - Architecture: `x86_64` or `aarch64`
   - 2 x Ethernet NICs
-- Setup ed25519 authorized key for ssh access as password login is disabled
-  - `ssh-copy-id -i ~/.ssh/id_ed25519.pub ${USER}@${HOME_ROUTER_IP}`
 
 **Released version:**
 
