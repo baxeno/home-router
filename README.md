@@ -2,6 +2,7 @@
 
 [![GitHub License](https://img.shields.io/github/license/baxeno/home-router?style=for-the-badge&cacheSeconds=86400)](https://github.com/baxeno/home-router/blob/main/LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/baxeno/home-router?sort=semver&display_name=tag&style=for-the-badge&cacheSeconds=86400)](https://github.com/baxeno/home-router/releases)
+![Self-hosted](https://img.shields.io/badge/Self%20Hosted-yes-00C7B7?style=for-the-badge)
 
 Setup a secure router for home or small office use on a modern open-source foundation using Linux distributions like AlmaLinux, Fedora or CentOS Stream.
 It require no data sharing or persistent cloud connection for being eligible to receive software updates.
