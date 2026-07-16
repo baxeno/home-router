@@ -8,7 +8,9 @@
     "interfaces-config": {
       "interfaces": [
         "{{ router_bridge_interface }}"
-      ]
+      ],
+      "service-sockets-max-retries": 17280,
+      "service-sockets-retry-wait-time": 5000
     },
     "control-socket": {
       "socket-type": "unix",
