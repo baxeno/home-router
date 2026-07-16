@@ -4,7 +4,8 @@
 [![GitHub Release](https://img.shields.io/github/v/release/baxeno/home-router?sort=semver&display_name=tag&style=for-the-badge&cacheSeconds=86400)](https://github.com/baxeno/home-router/releases)
 ![Self-hosted](https://img.shields.io/badge/Self%20Hosted-yes-00C7B7?style=for-the-badge)
 
-Setup a secure router for home or small office use on a modern open-source foundation using Linux distributions like AlmaLinux, Fedora or CentOS Stream.
+Setup a secure router for home or small office use.
+Based on a modern open-source foundation using Linux distributions like AlmaLinux, Fedora or CentOS Stream.
 It require no data sharing or persistent cloud connection for being eligible to receive software updates.
 AlmaLinux is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
 Fedora Server is recommended for new hardware and latest software features.
@@ -130,9 +131,11 @@ The following open-source software components are used.
 
 - [Kea DHCPv4 Server configuration](https://kea.readthedocs.io/en/latest/arm/dhcp4-srv.html#dhcpv4-server-configuration)
 
-## Development
+## Contributing
 
 Feel free to open bug reports or feature requests in [Issues section](https://github.com/baxeno/home-router/issues).
+
+## Development
 
 Install from git using Ansible:
 
