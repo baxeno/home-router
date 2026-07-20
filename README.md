@@ -116,6 +116,16 @@ This result in them being compromised and used in large botnets and/or as AI scr
 - September 2022 [Moobot botnet is coming for your unpatched D-Link router](https://www.bleepingcomputer.com/news/security/moobot-botnet-is-coming-for-your-unpatched-d-link-router/)
   - The Mirai malware botnet variant known as ‘MooBot’ has re-emerged in a new attack wave that started early last month, targeting vulnerable D-Link routers with a mix of old and new exploits.
 
+### What is a modern open-source foundation?
+
+|Vintage|Modern|Reasoning|
+|---|---|---|
+| `SysV Init`, `Busybox runit` | `systemd` | Better service management, resource tracking, log tagging, sandboxing with `cgroups` and `namespaces`. |
+| `iptables`, `ip6tables` | `firewalld` (`nftables`) | Easier firewalling for each interface using zones. |
+| `ISC DHCP`, `dnsmasq` | `Kea DHCP` | Fully featured DHCPv4 and DHCPv6 server with structured JSON configuration file. |
+| `udhcpc`, `ifconfig` | `NetworkManager` | Networking that Just Works, DHCPv4 and IPv6 autoconfiguration. |
+| `openssh`, `dropbear` | `openssh` | A true classic never goes out of style. OpenSSH has been continuously been updated with better ciphers and internal software architecture. |
+
 ## Used tools
 
 The following open-source software components are used.
