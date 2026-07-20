@@ -6,7 +6,7 @@ router_wan_interface: ""
 router_lan_interface: ""
 router_bridge_interface: "br82"
 
-router_hostname: "home-router"
+router_hostname: "router"
 router_domain: "tux.internal"
 
 router_admin_public_key: ""

@@ -9,6 +9,7 @@ Based on a modern open-source foundation using Linux distributions like AlmaLinu
 It require no data sharing or persistent cloud connection for being eligible to receive software updates.
 AlmaLinux is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
 Fedora Server is recommended for new hardware and latest software features.
+Create a single Ansible inventory file based on [`inventory/localhost.yml`](ansible/inventory/localhost.yml) with your router configuration and you are ready to deploy.
 
 **Features:**
 

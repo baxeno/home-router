@@ -12,5 +12,8 @@ all:
           router_wan_interface: ""
           router_lan_interface: ""
 
+          # SSH public key for local on-prem management
+          router_admin_public_key: ""
+
           # Optional configuration parameters can be found here:
           # soho-router/defaults/main.yml
