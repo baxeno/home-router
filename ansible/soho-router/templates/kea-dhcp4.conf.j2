@@ -1,10 +1,7 @@
 {
   "Dhcp4": {
-    "renew-timer": 3600,
-    "rebind-timer": 5400,
-    "min-valid-lifetime": 900,
-    "valid-lifetime": 7200,
-    "max-valid-lifetime": 28800,
+    "calculate-tee-times": true,
+    "valid-lifetime": 28800,
     "interfaces-config": {
       "interfaces": [
         "{{ router_bridge_interface }}"
