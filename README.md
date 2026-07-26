@@ -116,6 +116,24 @@ This result in them being compromised and used in large botnets and/or as AI scr
 - September 2022 [Moobot botnet is coming for your unpatched D-Link router](https://www.bleepingcomputer.com/news/security/moobot-botnet-is-coming-for-your-unpatched-d-link-router/)
   - The Mirai malware botnet variant known as ‘MooBot’ has re-emerged in a new attack wave that started early last month, targeting vulnerable D-Link routers with a mix of old and new exploits.
 
+### What IP range should I use?
+
+There are 3 standard private IPv4 ranges:
+
+  - 10.0.0.0 - 10.255.255.255 (10.0.0.0/8)
+    - Very large networks
+  - 172.16.0.0 - 172.32.255.255 (172.16.0.0/12)
+    - Medium-size networks
+  - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16) **Recommended**
+    - Home and small offices networks
+
+Avoid special local ranges:
+
+  - 127.0.0.0 - 127.255.255.255 (127.0.0.0/8)
+    - Loopback addresses used by localhost.
+  - 169.254.0.0 - 169.254.255.255 (169.254.0.0/16)
+    - Link-local addresses assigned automatically when no DHCP server is found on the network.
+
 ### What is a modern open-source foundation?
 
 |Vintage|Modern|Reasoning|
