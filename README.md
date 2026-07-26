@@ -49,10 +49,10 @@ Create a single Ansible inventory file based on [`inventory/localhost.yml`](ansi
 sudo dnf install -y ansible-core
 
 # Download and extract latest release
-curl https://codeload.github.com/baxeno/home-router/tar.gz/refs/tags/v0.4.0 -o home-router-v0.4.0.tar.gz
-tar -xvzf home-router-v0.4.0.tar.gz
+curl https://codeload.github.com/baxeno/home-router/tar.gz/refs/tags/v0.5.0 -o home-router-v0.5.0.tar.gz
+tar -xvzf home-router-v0.5.0.tar.gz
 
-cd home-router-0.4.0/ansible
+cd home-router-0.5.0/ansible
 # Update `inventory/localhost.yml` with interfaces and maybe some of the optional parameters
 ansible-playbook -K -i inventory/localhost.yml home-router.yml
 ```
