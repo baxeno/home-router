@@ -187,3 +187,10 @@ Show Ansible facts for localhost:
 ```bash
 ansible localhost -m ansible.builtin.setup
 ```
+
+### Release flow
+
+- Draft release notes in GitHub
+- Update `README.md` examples with latest release version
+- Tag git (Ex. `git tag -a v0.5.0`)
+- Publish release notes in GitHub
