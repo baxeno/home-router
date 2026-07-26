@@ -122,9 +122,10 @@ This result in them being compromised and used in large botnets and/or as AI scr
 |---|---|---|
 | `SysV Init`, `Busybox runit` | `systemd` | Better service management, resource tracking, log tagging, sandboxing with `cgroups` and `namespaces`. |
 | `iptables`, `ip6tables` | `firewalld` (`nftables`) | Easier firewalling for each interface using zones. |
-| `ISC DHCP`, `dnsmasq` | `Kea DHCP` | Fully featured DHCPv4 and DHCPv6 server with structured JSON configuration file. |
+| `ISC DHCP (dhcpd)`, `dnsmasq` | `Kea DHCP` | Fully featured DHCPv4 and DHCPv6 server with structured JSON configuration file. |
 | `udhcpc`, `ifconfig` | `NetworkManager` | Networking that Just Works, DHCPv4 and IPv6 autoconfiguration. |
 | `openssh`, `dropbear` | `openssh` | A true classic never goes out of style. OpenSSH has been continuously been updated with better ciphers and internal software architecture. |
+| `openntpd` | `chrony` | Full NTS support for authenticated time sync. |
 
 ## Used tools
 
@@ -137,6 +138,7 @@ The following open-source software components are used.
 - [NetworkManager](https://networkmanager.dev/) - NetworkManager is the standard Linux network configuration tool suite.
 - [Kea DHCP](https://www.isc.org/kea/) - Modern, open source DHCPv4 & DHCPv6 server.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
+- [Chrony](https://chrony-project.org/) - chrony is a versatile implementation of the Network Time Protocol (NTP).
 
 **Documentation links:**
 
