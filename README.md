@@ -144,6 +144,7 @@ Avoid special local ranges:
 | `udhcpc`, `ifconfig` | `NetworkManager` | Networking that Just Works, DHCPv4 and IPv6 autoconfiguration. |
 | `openssh`, `dropbear` | `openssh` | A true classic never goes out of style. OpenSSH has been continuously been updated with better ciphers and internal software architecture. |
 | `openntpd` | `chrony` | Full NTS support for authenticated time sync. |
+| `avahi` | `systemd-resolved` | DNS resolver with DNSSEC, DoH, DoT and mDNS support. |
 
 ## Used tools
 
@@ -157,6 +158,7 @@ The following open-source software components are used.
 - [Kea DHCP](https://www.isc.org/kea/) - Modern, open source DHCPv4 & DHCPv6 server.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
 - [Chrony](https://chrony-project.org/) - chrony is a versatile implementation of the Network Time Protocol (NTP).
+- [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) - Network Name Resolution manager.
 
 **Documentation links:**
 
