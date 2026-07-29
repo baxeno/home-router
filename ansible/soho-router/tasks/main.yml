@@ -39,7 +39,6 @@
 # -----------------------------------------------------------------------------
 # Setup basic host configuration and SSH server
 # -----------------------------------------------------------------------------
-
 - name: Set hostname ({{ router_hostname }}) using systemd strategy
   become: true
   ansible.builtin.hostname:
@@ -139,6 +138,44 @@
     enabled: true
 
 # -----------------------------------------------------------------------------
+# Setup multicast DNS (mDNS)
+# -----------------------------------------------------------------------------
+- name: Install systemd-resolved
+  become: true
+  ansible.builtin.dnf:
+    name: systemd-resolved
+    state: present
+
+- name: Create systemd-resolved drop-in configuration directory
+  become: true
+  ansible.builtin.file:
+    path: /etc/systemd/resolved.conf.d
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Configure mDNS in systemd-resolved
+  become: true
+  ansible.builtin.copy:
+    src: files/resolved.conf.d/mdns.conf
+    dest: /etc/systemd/resolved.conf.d/mdns.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Restart resolved service
+
+- name: Enable systemd-resolved service
+  become: true
+  ansible.builtin.systemd_service:
+    name: systemd-resolved.service
+    state: started
+    enabled: true
+  notify:
+    - Restart resolved service
+
+# -----------------------------------------------------------------------------
 # Configure allowed IP traffic in firewalld
 # -----------------------------------------------------------------------------
 - name: Assign WAN interface ({{ router_wan_interface }}) to external zone
@@ -205,7 +242,6 @@
   loop:
     - samba-client
     - cockpit
-    - mdns
   loop_control:
     loop_var: int_unused_service
   notify:
@@ -221,6 +257,7 @@
   loop:
     - dhcp
     - ssh
+    - mdns
   loop_control:
     loop_var: int_used_service
   notify:
