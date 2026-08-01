@@ -96,6 +96,8 @@ This result in them being compromised and used in large botnets and/or as AI scr
 
 **Examples:**
 
+- June 2026 [These 5 Routers Are No Longer Safe To Use After A New Security Backdoor Was Discovered](https://www.bgr.com/2215770/tenda-router-security-backdoor-cert-safety/)
+  - Multiple Tenda WiFi routers contain admin backdoor
 - June 2026 [RustDuck Botnet Rebuilds in Rust to Hijack Routers and Servers for DDoS](https://thehackernews.com/2026/06/rustduck-botnet-rebuilds-in-rust-to.html)
   - RustDuck is hijacking home routers, IP cameras, Android boxes, and poorly secured servers.
   - Huawei, D-Link and Totolink routers.
