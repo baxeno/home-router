@@ -43,9 +43,9 @@
         "reservations": [
         {% for client in dhcp_client_reservations %}
           {
-            "hostname": "client.name",
-            "hw-address": "client.mac",
-            "ip-address": "client.ipv4"
+            "hostname": "{{ client.name }}",
+            "hw-address": "{{ client.mac }}",
+            "ip-address": "{{ client.ipv4 }}"
           }{% if not loop.last %},{% endif %}
         {% endfor %}
         ],
