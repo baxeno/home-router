@@ -10,6 +10,9 @@
       "service-sockets-max-retries": 17280,
       "service-sockets-retry-wait-time": 5000
     },
+    "reservations-global": false,
+    "reservations-in-subnet": true,
+    "reservations-out-of-pool": true,
     "control-socket": {
       "socket-type": "unix",
       "socket-name": "kea4-ctrl-socket"
@@ -36,6 +39,15 @@
           {
             "pool": "{{ dhcp_client_pool_start }} - {{ dhcp_client_pool_end }}"
           }
+        ],
+        "reservations": [
+        {% for client in dhcp_client_reservations %}
+          {
+            "hostname": "client.name",
+            "hw-address": "client.mac",
+            "ip-address": "client.ipv4"
+          }{% if not loop.last %},{% endif %}
+        {% endfor %}
         ],
         "interface": "{{ router_bridge_interface }}",
         "option-data": [

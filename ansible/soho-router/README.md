@@ -27,6 +27,10 @@ The following variables can be set in inventory file:
 - `dhcp_secondary_dns`: Secondary DNS server given to DHCP clients.
 - `dhcp_client_pool_start`: First IP address given to DHCP clients.
 - `dhcp_client_pool_end`: Last IP address given to DHCP clients.
+- `dhcp_client_reservations`: IP reservations outside IP pool but inside `router_lan_network`.
+  - `name`: Hostname
+  - `mac`: MAC address
+  - `ipv4`: IPv4 address
 
 The following variables are automatically calculated based on other variables.
 - `router_lan_subnet`: Calculated based on `router_lan_network`.
