@@ -26,3 +26,11 @@ all:
 
           dhcp_client_pool_start: "192.168.20.100"
           dhcp_client_pool_end: "192.168.20.250"
+
+          dhcp_client_reservations:
+            - name: "alma10-client"
+              mac: "52:54:00:b9:a1:71"
+              ipv4: "192.168.20.70"
+            - name: "fedora44-client"
+              mac: "52:54:00:de:ea:bb"
+              ipv4: "192.168.20.71"
