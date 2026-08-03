@@ -23,6 +23,7 @@
       - "router_domain: {{ router_domain }}"
       - "router_lan_network: {{ router_lan_network }}"
       - "router_lan_subnet: {{ router_lan_subnet }}"
+      - "router_admin_public_key: {{ 'yes' if (router_admin_public_key | length) > 0 else 'no' }}"
       - "dhcp_router_ip: {{ dhcp_router_ip }}"
       - "dhcp_primary_dns: {{ dhcp_primary_dns }}"
       - "dhcp_secondary_dns: {{ dhcp_secondary_dns }}"
