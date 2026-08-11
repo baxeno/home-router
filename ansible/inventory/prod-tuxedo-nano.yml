@@ -30,10 +30,17 @@ all:
 
           dhcp_client_reservations:
             # Multiroom streaming - Bedroom
+            # WiFi: "90:56:82:b0:74:45", Ethernet: "90:56:82:b0:74:44"
             - name: "bluesound-pulse-m"
-              mac: "90:56:82:b0:74:45" # "90:56:82:b0:74:44"
+              mac: "90:56:82:b0:74:45"
               ipv4: "192.168.82.50"
             # Multiroom streaming - Bathroom
+            # WiFi: "e8:5c:5f:48:7a:db", Ethernet: "90:56:82:62:28:23"
             - name: "bluesound-pulse-flex-2i"
-              mac: "e8:5c:5f:48:7a:db" # "90:56:82:62:28:23"
+              mac: "e8:5c:5f:48:7a:db"
               ipv4: "192.168.82.51"
+            # Multiroom streaming - Living room
+            # WiFi: "90:56:82:83:07:37", Ethernet: "90:56:82:83:07:36"
+            - name: "bluesound-power-node-n331"
+              mac: "90:56:82:83:07:37"
+              ipv4: "192.168.82.52"
