@@ -41,7 +41,7 @@
 # -----------------------------------------------------------------------------
 # Setup basic host configuration and SSH server
 # -----------------------------------------------------------------------------
-- name: Set hostname ({{ router_hostname }}) using systemd strategy
+- name: Set hostname using systemd strategy ({{ router_hostname }})
   become: true
   ansible.builtin.hostname:
     name: "{{ router_hostname }}"
@@ -180,7 +180,7 @@
 # -----------------------------------------------------------------------------
 # Configure allowed IP traffic in firewalld
 # -----------------------------------------------------------------------------
-- name: Assign WAN interface ({{ router_wan_interface }}) to external zone
+- name: Assign WAN interface to external zone ({{ router_wan_interface }})
   become: true
   ansible.posix.firewalld:
     zone: external
@@ -190,7 +190,7 @@
   notify:
     - Restart firewalld service
 
-- name: Assign LAN interface ({{ router_lan_interface }}) to internal zone
+- name: Assign LAN interface to internal zone ({{ router_lan_interface }})
   become: true
   ansible.posix.firewalld:
     zone: internal
@@ -200,7 +200,7 @@
   notify:
     - Restart firewalld service
 
-- name: Assign bridge interface ({{ router_bridge_interface }}) to internal zone
+- name: Assign bridge interface to internal zone ({{ router_bridge_interface }})
   become: true
   ansible.posix.firewalld:
     zone: internal
