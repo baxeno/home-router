@@ -21,7 +21,7 @@
     owner: root
     group: root
     state: directory
-    mode: 0755
+    mode: '0755'
   when:
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
@@ -33,7 +33,7 @@
     dest: /etc/systemd/system/dnf-automatic-install.timer.d/dnf-override.conf
     owner: root
     group: root
-    mode: 0444
+    mode: '0444'
   when:
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 40) or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int <= 10)
@@ -78,7 +78,7 @@
     owner: root
     group: root
     state: directory
-    mode: 0755
+    mode: '0755'
   when:
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
@@ -90,7 +90,7 @@
     dest: /etc/systemd/system/dnf5-automatic.timer.d/dnf-override.conf
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   when:
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
@@ -102,7 +102,7 @@
     dest: /etc/dnf/automatic.conf
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   when:
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int >= 41) or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] != 'Fedora' and ansible_facts['distribution_major_version']|int >= 11)
