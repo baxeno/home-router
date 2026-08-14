@@ -13,10 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Install ansible-lint via apt
+      - name: Install ansible-lint
         run: |
-          sudo apt update
-          sudo apt install -y ansible-lint
+          python3 -m pip install --upgrade pip
+          pip install ansible-lint
 
       - name: Ansible lint
         run: |
