@@ -29,7 +29,7 @@
       - "dhcp_secondary_dns: {{ dhcp_secondary_dns }}"
       - "dhcp_client_pool_start: {{ dhcp_client_pool_start }}"
       - "dhcp_client_pool_end: {{ dhcp_client_pool_end }}"
-      - "dhcp_client_reservations: {% for client in dhcp_client_reservations %}{{ client.mac }} = {{ client.ipv4 }}{% if not loop.last %}, {% endif %}{% endfor %}"
+      - "dhcp_client_reservations: {% for client in dhcp_client_reservations %}{{ client.mac }} = {{ client.ipv4 }}{% if not loop.last %}, {% endif %}{% endfor %}" # noqa yaml[line-length]
 
 - name: Fail when 'router_wan_interface', 'router_bridge_interface' or 'router_lan_interface' variables are empty
   ansible.builtin.fail:
