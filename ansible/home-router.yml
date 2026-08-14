@@ -12,7 +12,7 @@
       ansible.builtin.include_role:
         name: "{{ role }}"
       loop:
-        - auto-update
+        - auto_update
         - soho-router
       loop_control:
         loop_var: role

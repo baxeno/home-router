@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# tasks file for auto-update
+# tasks file for auto_update
 
 # -----------------------------------------------------------------------------
 # dnf4: unattended auto updates based on legacy Fedora

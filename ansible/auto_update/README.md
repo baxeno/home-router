@@ -1,4 +1,4 @@
-auto-update
+auto_update
 ===========
 
 Setup DNF4/DNF5 based weekly automatic updates on host.
@@ -28,7 +28,7 @@ Role can be used like this
     - hosts: routers
       roles:
          - os_requirements
-         - auto-update
+         - auto_update
 
 License
 -------
