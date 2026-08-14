@@ -1,7 +1,8 @@
 # Home router based on AlmaLinux or Fedora Server
 
-[![GitHub License](https://img.shields.io/github/license/baxeno/home-router?style=for-the-badge&cacheSeconds=86400)](https://github.com/baxeno/home-router/blob/main/LICENSE)
-[![GitHub Release](https://img.shields.io/github/v/release/baxeno/home-router?sort=semver&display_name=tag&style=for-the-badge&cacheSeconds=86400)](https://github.com/baxeno/home-router/releases)
+[![GitHub License](https://img.shields.io/github/license/baxeno/home-router?style=for-the-badge&cacheSeconds=3600)](https://github.com/baxeno/home-router/blob/main/LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/baxeno/home-router?sort=semver&display_name=tag&style=for-the-badge&cacheSeconds=3600)](https://github.com/baxeno/home-router/releases)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/baxeno/home-router/ansible-lint.yml?branch=main&event=push&style=for-the-badge&label=ansible%20lint&cacheSeconds=3600)
 ![Self-hosted](https://img.shields.io/badge/Self%20Hosted-yes-00C7B7?style=for-the-badge)
 
 Setup a secure router for home or small office use.
