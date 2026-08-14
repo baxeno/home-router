@@ -1,0 +1,23 @@
+name: Ansible lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ansible-lint:
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install ansible-lint via apt
+        run: |
+          sudo apt update
+          sudo apt install -y ansible-lint
+
+      - name: Ansible lint
+        run: |
+          ansible-lint --profile=min --offline ansible/
