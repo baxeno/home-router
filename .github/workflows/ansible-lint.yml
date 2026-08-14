@@ -20,4 +20,4 @@ jobs:
 
       - name: Ansible lint
         run: |
-          ansible-lint --profile=min --offline ansible/
+          ansible-lint --profile=production --warn-list="schema[meta]" --offline ansible/
