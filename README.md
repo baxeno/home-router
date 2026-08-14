@@ -24,15 +24,18 @@ Create a single Ansible inventory file based on [`inventory/localhost.yml`](ansi
 
 **Supported OSes:**
 
-- AlmaLinux OS 10 (EoL ~2035)
+- AlmaLinux OS 10 (EoL 2035-05-31)
 - Fedora Server 44 (EoL 2027-05-19)
 - Fedora Server 43 (EoL 2026-12-02)
 - Fedora Server 42 (EoL 2026-05-13)
 - Fedora Server 41 (EoL 2025-11-26)
 - CentOS Stream 10 (EoL 2030-05-31)
 
-> Migrate installations before OS reach End of Life (EoL)
-> [Fedora End of Life Releases](https://docs.fedoraproject.org/en-US/releases/eol/)
+Migrate installations before OS reach End of Life (EoL), see more info below:
+
+- [AlmaLinux EoL](https://endoflife.date/almalinux)
+- [Fedora Linux EoL](https://endoflife.date/fedora) / [Fedora End of Life Releases](https://docs.fedoraproject.org/en-US/releases/eol/)
+- [CentOS Stream EoL](https://endoflife.date/centos-stream)
 
 ## Install
 
