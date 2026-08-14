@@ -264,3 +264,20 @@
     loop_var: int_used_service
   notify:
     - Restart firewalld service
+
+# -----------------------------------------------------------------------------
+# Setup router monitoring
+# -----------------------------------------------------------------------------
+- name: Install basic system monitoring (htop)
+  become: true
+  ansible.builtin.dnf:
+    name: htop
+    state: present
+
+# https://github.com/baxeno/home-router/issues/14
+- name: Install advanced system monitoring (glances)
+  become: true
+  ansible.builtin.dnf:
+    name: glances
+    state: present
+  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora')
