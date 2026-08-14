@@ -13,6 +13,6 @@
         name: "{{ role }}"
       loop:
         - auto_update
-        - soho-router
+        - soho_router
       loop_control:
         loop_var: role

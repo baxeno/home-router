@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# tasks file for soho-router
+# tasks file for soho_router
 
 # -----------------------------------------------------------------------------
 # Calculate configuration parameters

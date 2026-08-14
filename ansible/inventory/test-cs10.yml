@@ -13,7 +13,7 @@ all:
           router_lan_interface: "enp7s0"
 
           # Optional configuration parameters can be found here:
-          # soho-router/defaults/main.yml
+          # soho_router/defaults/main.yml
 
           router_hostname: "cs10-router"
           router_domain: "centos-stream-testing.internal"

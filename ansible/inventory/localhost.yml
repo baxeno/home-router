@@ -16,4 +16,4 @@ all:
           router_admin_public_key: ""
 
           # Optional configuration parameters can be found here:
-          # soho-router/defaults/main.yml
+          # soho_router/defaults/main.yml

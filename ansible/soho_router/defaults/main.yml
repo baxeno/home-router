@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# defaults file for soho-router
+# defaults file for soho_router
 
 router_wan_interface: ""
 router_lan_interface: ""

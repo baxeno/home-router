@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# handlers file for soho-router
+# handlers file for soho_router
 
 - name: Restart Kea DHCPv4 service
   become: true
