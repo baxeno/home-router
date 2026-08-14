@@ -1,12 +1,14 @@
 # SPDX-License-Identifier: Apache-2.0
 ---
-- hosts: routers
+- name: Run home-router | os_requirements
+  hosts: routers
   tasks:
     - name: Bootstrap host requirements and check OS requirements
       ansible.builtin.include_role:
         name: os_requirements
 
-- hosts: routers
+- name: Run home-router | auto_update and soho_router
+  hosts: routers
   tasks:
     - name: Setup router
       ansible.builtin.include_role:
