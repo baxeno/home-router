@@ -3,7 +3,7 @@
 # tasks file for os_requirements
 
 - name: Unsupported distributions and operating system
-  fail:
+  ansible.builtin.fail:
     msg: "Use Fedora Server for latest hardware support and AlmaLinux for LTS on supported hardware"
   when:
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'RedHat') or
@@ -28,7 +28,7 @@
     (ansible_facts['os_family'] == 'Windows')
 
 - name: Supported Linux distribution has reached End-of-Life (EoL)
-  fail:
+  ansible.builtin.fail:
     msg: "Warning: Use newer version of Fedora Server"
   when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 42)
   ignore_errors: True
