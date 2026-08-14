@@ -2,5 +2,3 @@
 ---
 - hosts: localhost
   remote_user: root
-  roles:
-    - soho_router
