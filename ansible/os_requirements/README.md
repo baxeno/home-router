@@ -6,7 +6,7 @@ Check OS requirements and install required Ansible dependencies.
 Requirements
 ------------
 
-Must be run on a supported OS, see `os-requirements` role.
+Must be run on a supported OS, see `os_requirements` role.
 
 Role Variables
 --------------

@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# meta file for os-requirements
+# meta file for os_requirements
 
 galaxy_info:
   author: Bruno Thomsen

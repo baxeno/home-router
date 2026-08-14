@@ -18,7 +18,7 @@ None.
 Dependencies
 ------------
 
-os-requirements
+os_requirements
 
 Example Playbook
 ----------------
@@ -27,7 +27,7 @@ Role can be used like this
 
     - hosts: routers
       roles:
-         - os-requirements
+         - os_requirements
          - auto-update
 
 License

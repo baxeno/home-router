@@ -6,7 +6,7 @@ Setup router based on Linux, systemd, Kea DHCP, NetworkManager and firewalld.
 Requirements
 ------------
 
-Must be run on a supported OS, see `os-requirements` role.
+Must be run on a supported OS, see `os_requirements` role.
 
 Role Variables
 --------------
@@ -40,7 +40,7 @@ Dependencies
 ------------
 
 The following role must be run before this:
-- `os-requirements`
+- `os_requirements`
 
 Example Playbook
 ----------------

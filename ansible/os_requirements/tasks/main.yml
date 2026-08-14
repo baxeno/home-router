@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: Apache-2.0
 ---
-# tasks file for os-requirements
+# tasks file for os_requirements
 
 - name: Unsupported distributions and operating system
   fail:
