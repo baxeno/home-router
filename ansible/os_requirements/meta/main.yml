@@ -15,14 +15,11 @@ galaxy_info:
   platforms:
     - name: "Fedora"
       versions:
-        - "41"
-        - "42"
-        - "43"
-        - "44"
+        - "all"
     - name: "AlmaLinux"
       versions:
         - "10"
-    - name: "CentOS"
+    - name: "EL"
       versions:
         - "10"
 
