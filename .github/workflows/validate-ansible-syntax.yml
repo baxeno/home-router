@@ -1,0 +1,19 @@
+name: Validate Ansible syntax
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-ansible-syntax:
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Ansible syntax check
+        run: |
+          pushd ansible/
+          ./validate-syntax.sh
