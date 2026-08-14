@@ -27,6 +27,5 @@ galaxy_info:
         - "10"
 
   galaxy_tags: []
-
 dependencies:
   - role: os_requirements
