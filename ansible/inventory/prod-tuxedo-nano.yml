@@ -39,8 +39,18 @@ all:
             - name: "bluesound-pulse-flex-2i"
               mac: "e8:5c:5f:48:7a:db"
               ipv4: "192.168.82.51"
-            # Multiroom streaming - Living room
+            # Multiroom streaming - Living room - Stereo speakers (LR, front)
             # WiFi: "90:56:82:83:07:37", Ethernet: "90:56:82:83:07:36"
             - name: "bluesound-power-node-n331"
               mac: "90:56:82:83:07:37"
               ipv4: "192.168.82.52"
+            # Multiroom streaming - Living room - Left surround speaker (LS, back)
+            # WiFi: "90:56:82:b0:a8:11", Ethernet: "90:56:82:b0:a8:10"
+            - name: "bluesound-pulse-m-ls"
+              mac: "90:56:82:b0:a8:11"
+              ipv4: "192.168.82.53"
+            # Multiroom streaming - Living room - Right surround speaker (RS, back)
+            # WiFi: "90:56:82:b0:a4:2b", Ethernet: "90:56:82:b0:a4:2a"
+            - name: "bluesound-pulse-m-rs"
+              mac: "90:56:82:b0:a4:2b"
+              ipv4: "192.168.82.54"
