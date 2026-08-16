@@ -29,8 +29,10 @@
 
 - name: Supported Linux distribution has reached End-of-Life (EoL)
   ansible.builtin.fail:
-    msg: "Warning: Use newer version of Fedora Server"
-  when: (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 42)
+    msg: "Warning: Use newer version of {{ ansible_facts['distribution'] }}"
+  when:
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 42) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'CentOS' and ansible_facts['distribution_major_version']|int <= 8)
   failed_when: false
 
 # -----------------------------------------------------------------------------
