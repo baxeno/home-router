@@ -21,7 +21,10 @@ Create a single Ansible inventory file based on [`inventory/localhost.yml`](ansi
 - Maintenance features
   - Automatically system update and reboot if needed
 - Management features
-  - SSH server for local on-prem management
+  - SSH server for local on-prem management (re-run Ansible playbook)
+- Monitoring features
+  - Basic (`htop`) system monitoring
+  - Advanced (`glances`) system monitoring that is very good at highlighting the most important metric
 
 **Supported OSes:**
 
@@ -165,6 +168,8 @@ The following open-source software components are used.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
 - [Chrony](https://chrony-project.org/) - chrony is a versatile implementation of the Network Time Protocol (NTP).
 - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) - Network Name Resolution manager.
+- [htop](https://htop.dev/) / [htop github](https://github.com/htop-dev/htop) - interactive process viewer.
+- [glances](https://nicolargo.github.io/glances/) / [glances github](https://github.com/nicolargo/glances) - An Eye on your System.
 
 **Documentation links:**
 
