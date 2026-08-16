@@ -8,7 +8,7 @@
 Setup a secure router for home or small office use.
 Based on a modern open-source foundation using Linux distributions like AlmaLinux OS, Fedora Linux or CentOS Stream.
 It require no data sharing or persistent cloud connection for being eligible to receive software updates.
-AlmaLinux OS (ISO Image) is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
+AlmaLinux OS (ISO Image/Server Admin) is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
 Fedora Linux (Server edition) is recommended for new hardware and latest software features.
 Create a single Ansible inventory file based on [`inventory/localhost.yml`](ansible/inventory/localhost.yml) with your router configuration and you are ready to deploy.
 
@@ -29,6 +29,7 @@ Create a single Ansible inventory file based on [`inventory/localhost.yml`](ansi
 **Supported OSes:**
 
 - AlmaLinux OS 10 (EoL 2035-05-31)
+- AlmaLinux OS 9 (EoL 2032-05-31)
 - Fedora Linux 44 (EoL 2027-05-19)
 - Fedora Linux 43 (EoL 2026-12-02)
 - Fedora Linux 42 (EoL 2026-05-13)
@@ -41,12 +42,20 @@ Migrate installations before OS reach End of Life (EoL), see more info below:
 - [Fedora Linux EoL](https://endoflife.date/fedora) / [Fedora End of Life Releases](https://docs.fedoraproject.org/en-US/releases/eol/)
 - [CentOS Stream EoL](https://endoflife.date/centos-stream)
 
+Fedora vs Enterprise Linux versions:
+
+- Fedora 34 == AlmaLinux OS 9
+- Fedora 40 == AlmaLinux OS 10 / CentOS Stream 10
+
 ## Install
 
 **Prerequisites:**
 
-- Install [Fedora Server](https://fedoraproject.org/server/) or [AlmaLinux](https://almalinux.org/get-almalinux/) on bare metal router hardware
-  - Architecture: `x86_64` or `aarch64`
+- Install [Fedora Server](https://fedoraproject.org/server/) or [AlmaLinux OS](https://almalinux.org/get-almalinux/) on bare metal router hardware
+  - Architecture:
+    - `x86_64`
+    - `x86_64 v2` (only AlmaLinux OS 10)
+    - `aarch64`
   - 2 x Ethernet NICs
 
 **Released version:**

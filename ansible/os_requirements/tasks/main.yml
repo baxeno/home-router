@@ -9,7 +9,7 @@
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'RedHat') or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Fedora' and ansible_facts['distribution_major_version']|int <= 34) or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'CentOS' and ansible_facts['distribution_major_version']|int <= 9) or
-    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'AlmaLinux' and ansible_facts['distribution_major_version']|int <= 9) or
+    (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'AlmaLinux' and ansible_facts['distribution_major_version']|int <= 8) or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'Scientific') or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'CloudLinux') or
     (ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution'] == 'OracleLinux') or
