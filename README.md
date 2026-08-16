@@ -42,12 +42,20 @@ Migrate installations before OS reach End of Life (EoL), see more info below:
 - [Fedora Linux EoL](https://endoflife.date/fedora) / [Fedora End of Life Releases](https://docs.fedoraproject.org/en-US/releases/eol/)
 - [CentOS Stream EoL](https://endoflife.date/centos-stream)
 
+Fedora vs Enterprise Linux versions:
+
+- Fedora 34 == AlmaLinux OS 9
+- Fedora 40 == AlmaLinux OS 10 / CentOS Stream 10
+
 ## Install
 
 **Prerequisites:**
 
 - Install [Fedora Server](https://fedoraproject.org/server/) or [AlmaLinux OS](https://almalinux.org/get-almalinux/) on bare metal router hardware
-  - Architecture: `x86_64` or `aarch64`
+  - Architecture:
+    - `x86_64`
+    - `x86_64 v2` (only AlmaLinux OS 10)
+    - `aarch64`
   - 2 x Ethernet NICs
 
 **Released version:**
