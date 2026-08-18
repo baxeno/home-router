@@ -163,6 +163,7 @@ Avoid special local ranges:
 | `openssh`, `dropbear` | `openssh` | A true classic never goes out of style. OpenSSH has been continuously been updated with better ciphers and internal software architecture. |
 | `openntpd` | `chrony` | Full NTS support for authenticated time sync. |
 | `avahi` | `systemd-resolved` | DNS resolver with DNSSEC, DoH, DoT and mDNS support. |
+| `eth0`, `eth1` | `ens1`, `enp2s0`, `enp2s0f0` | [Predictable Network Interface Names](https://systemd.io/PREDICTABLE_INTERFACE_NAMES/) |
 
 ## Used tools
 
