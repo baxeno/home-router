@@ -179,6 +179,35 @@
     - Restart resolved service
 
 # -----------------------------------------------------------------------------
+# Setup NTP server
+# -----------------------------------------------------------------------------
+- name: Install chrony (NTS/NTP server)
+  become: true
+  ansible.builtin.dnf:
+    name: chrony
+    state: present
+
+- name: Configure chronyd server based on template
+  become: true
+  ansible.builtin.template:
+    src: templates/chrony.conf.j2
+    dest: /etc/chrony.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Restart chronyd service
+
+- name: Enable chonyd service
+  become: true
+  ansible.builtin.systemd_service:
+    name: chronyd.service
+    state: started
+    enabled: true
+  notify:
+    - Restart chronyd service
+
+# -----------------------------------------------------------------------------
 # Configure allowed IP traffic in firewalld
 # -----------------------------------------------------------------------------
 - name: Assign WAN interface to external zone ({{ router_wan_interface }})
@@ -260,6 +289,7 @@
   loop:
     - dhcp
     - ssh
+    - ntp
     - mdns
   loop_control:
     loop_var: int_used_service

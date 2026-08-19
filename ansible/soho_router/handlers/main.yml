@@ -19,3 +19,9 @@
   ansible.builtin.systemd_service:
     name: systemd-resolved.service
     state: restarted
+
+- name: Restart chronyd service
+  become: true
+  ansible.builtin.systemd_service:
+    name: chronyd.service
+    state: restarted
