@@ -16,6 +16,7 @@ NC='\033[0m' # No Color
 
 KEA_SERVICE="kea-dhcp4.service"
 KEA_LEASES="/var/lib/kea/kea-leases4.csv"
+CHRONYD_SERVICE="chronyd.service"
 
 print_header()
 {
@@ -24,14 +25,15 @@ print_header()
     echo -e "${GRAY}----------------------------------------${NC}"
 }
 
-print_dhcp_server_status()
+print_service_status()
 {
-    print_header "${KEA_SERVICE} status"
-    systemctl status --no-pager -l "${KEA_SERVICE}"
-    if systemctl is-active "${KEA_SERVICE}" > /dev/null; then
-        echo -e "${KEA_SERVICE} [${GREEN}OK${NC}]"
+    service="${1}"
+    print_header "${service} status"
+    systemctl status --no-pager -l "${service}"
+    if systemctl is-active "${service}" > /dev/null; then
+        echo -e "${service} [${GREEN}OK${NC}]"
     else
-        echo -e "${KEA_SERVICE} [${RED}FAILED${NC}]"
+        echo -e "${service} [${RED}FAILED${NC}]"
     fi
 }
 
@@ -40,6 +42,8 @@ print_dhcp_server_leases()
     print_header "${KEA_SERVICE} leases"
     cat "${KEA_LEASES}" | column -s, -t
 }
+
+
 
 print_firewall_zone()
 {
@@ -50,7 +54,8 @@ print_firewall_zone()
 }
 
 # Tests
-print_dhcp_server_status
+print_service_status "${KEA_SERVICE}"
+print_service_status "${CHRONYD_SERVICE}"
 print_dhcp_server_leases
 print_firewall_zone "external"
 print_firewall_zone "internal"
