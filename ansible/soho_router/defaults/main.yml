@@ -21,3 +21,5 @@ dhcp_client_pool_start: "192.168.10.100"
 dhcp_client_pool_end: "192.168.10.250"
 
 dhcp_client_reservations: []
+
+nts_ntp_servers: []
