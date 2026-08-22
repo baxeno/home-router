@@ -1,11 +1,7 @@
-# Note: The general recommendation for an NTP client is to have at least
-# three NTP servers to be able to detect one server providing incorrect
-# time (falseticker).
 
-# Use four public NTP servers from the pool.ntp.org project. If this
-# host has a static public IP address, please consider joining the pool:
-# https://www.ntppool.org/join.html
-pool 2.fedora.pool.ntp.org iburst
+{% for nts_server in nts_ntp_servers %}{{ client.ipv4 }}
+server {{ nts_server.hostname }} iburst nts
+{% endfor %}
 
 # Record the rate at which the system clock gains/losses time.
 driftfile /var/lib/chrony/drift
@@ -19,13 +15,13 @@ rtcsync
 
 # Increase the minimum number of selectable sources required to adjust
 # the system clock.
-#minsources 2
+minsources 2
 
 # Allow NTP client access from local network.
 allow {{ router_lan_subnet }}
 
 # Require authentication (nts or key option) for all NTP sources.
-#authselectmode require
+authselectmode require
 
 # Save NTS keys and cookies.
 ntsdumpdir /var/lib/chrony
