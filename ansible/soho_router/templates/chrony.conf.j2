@@ -1,5 +1,5 @@
 
-{% for nts_server in nts_ntp_servers %}{{ client.ipv4 }}
+{% for nts_server in nts_ntp_servers %}
 server {{ nts_server.hostname }} iburst nts
 {% endfor %}
 
