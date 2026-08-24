@@ -178,12 +178,15 @@ The following open-source software components are used.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
 - [Chrony](https://chrony-project.org/) - chrony is a versatile implementation of the Network Time Protocol (NTP).
 - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) - Network Name Resolution manager.
+- [Predictable Network Interface Names](https://systemd.io/PREDICTABLE_INTERFACE_NAMES/)
 - [htop](https://htop.dev/) / [htop github](https://github.com/htop-dev/htop) - interactive process viewer.
 - [glances](https://nicolargo.github.io/glances/) / [glances github](https://github.com/nicolargo/glances) - An Eye on your System.
 
 **Documentation links:**
 
-- [Kea DHCPv4 Server configuration](https://kea.readthedocs.io/en/latest/arm/dhcp4-srv.html#dhcpv4-server-configuration)
+- [Kea: DHCPv4 Server configuration](https://kea.readthedocs.io/en/latest/arm/dhcp4-srv.html#dhcpv4-server-configuration)
+- [Netnod: Best practices for connecting to NTP servers](https://www.netnod.se/blog/best-practices-connecting-ntp-servers)
+- [Google: NTP Leap Smear](https://developers.google.com/time/smear)
 
 ## Contributing
 
