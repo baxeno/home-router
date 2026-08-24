@@ -59,8 +59,13 @@ all:
           # PTB (Germany)
           # TimeNL (Netherlands)
           nts_ntp_servers:
-            - hostname: nts.netnod.se
-            - hostname: ptbtime1.ptb.de
-            - hostname: ptbtime4.ptb.de
-            - hostname: ntppool1.time.nl
-            - hostname: ntppool2.time.nl
+            - hostname: "nts.netnod.se"
+              type: "server"
+            - hostname: "ptbtime1.ptb.de"
+              type: "server"
+            - hostname: "ptbtime4.ptb.de"
+              type: "server"
+            - hostname: "ntppool1.time.nl"
+              type: "server"
+            - hostname: "ntppool2.time.nl"
+              type: "server"

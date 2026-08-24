@@ -51,8 +51,6 @@ print_dhcp_server_leases()
     cat "${KEA_LEASES}" | column -s, -t
 }
 
-
-
 print_firewall_zone()
 {
     local zone="${1}"

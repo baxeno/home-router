@@ -1,6 +1,6 @@
 
 {% for nts_server in nts_ntp_servers %}
-server {{ nts_server.hostname }} iburst nts
+{{ nts_server.type }} {{ nts_server.hostname }} iburst nts
 {% endfor %}
 
 # Record the rate at which the system clock gains/losses time.
