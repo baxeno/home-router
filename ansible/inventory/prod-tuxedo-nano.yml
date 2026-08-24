@@ -54,3 +54,18 @@ all:
             - name: "bluesound-pulse-m-rs"
               mac: "90:56:82:b0:a4:2b"
               ipv4: "192.168.82.54"
+
+          # Netnod (Sweden)
+          # PTB (Germany)
+          # TimeNL (Netherlands)
+          nts_ntp_servers:
+            - hostname: "nts.netnod.se"
+              type: "server"
+            - hostname: "ptbtime1.ptb.de"
+              type: "server"
+            - hostname: "ptbtime4.ptb.de"
+              type: "server"
+            - hostname: "ntppool1.time.nl"
+              type: "server"
+            - hostname: "ntppool2.time.nl"
+              type: "server"

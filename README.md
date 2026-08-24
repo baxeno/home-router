@@ -96,6 +96,27 @@ It depends on where in the world you are located, but a general recommendation i
   - Secondary DNS: 149.112.112.112
   - [Quad9 Services](https://docs.quad9.net/services/)
 
+### What is the best NTS/NTP option?
+
+It depends on where in the world you are located, but a general recommendation is to have at least three and don't mix [Leap Smear](https://developers.google.com/time/smear) together with normal non-smearing NTP servers.
+
+- (Sweden) Netnod
+  - `nts.netnod.se` (server type)
+  - Link: [Netnod time](https://www.netnod.se/time)
+- (Germany) Physikalisch-Technische Bundesanstalt, National Metrology Institute
+  - Braunschweig:
+    - `ptbtime1.ptb.de` (server type)
+    - `ptbtime2.ptb.de` (server type)
+    - `ptbtime3.ptb.de` (server type)
+  - Separate location:
+    - `ptbtime4.ptb.de` (server type)
+  - Link: [Physikalisch-Technische Bundesanstalt, National Metrology Institute](https://www.ptb.de/cms/en/ptb/fachabteilungen/abt9/gruppe-95/ref-952/time-synchronization-of-computers-using-the-network-time-protocol-ntp.html)
+- (Netherlands) TimeNL
+  - `ntspool.time.nl` (pool type)
+  - `ntppool1.time.nl` (server type)
+  - `ntppool2.time.nl` (server type)
+  - Link: [TimeNL](https://time.nl/index_en.html)
+
 ### Why is there no support for WiFi Access Point (AP) feature?
 
 It is possible to setup WiFi APs using a WiFi client USB dongle, but don't expect more then ~150MBit/s at ~1 meter range with a single WiFi client.
@@ -178,12 +199,17 @@ The following open-source software components are used.
 - [OpenSSH](https://www.openssh.com/) - SSH.... keeping your communiqués secret.
 - [Chrony](https://chrony-project.org/) - chrony is a versatile implementation of the Network Time Protocol (NTP).
 - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) - Network Name Resolution manager.
+- [Predictable Network Interface Names](https://systemd.io/PREDICTABLE_INTERFACE_NAMES/)
 - [htop](https://htop.dev/) / [htop github](https://github.com/htop-dev/htop) - interactive process viewer.
 - [glances](https://nicolargo.github.io/glances/) / [glances github](https://github.com/nicolargo/glances) - An Eye on your System.
 
 **Documentation links:**
 
-- [Kea DHCPv4 Server configuration](https://kea.readthedocs.io/en/latest/arm/dhcp4-srv.html#dhcpv4-server-configuration)
+- [Kea: DHCPv4 Server configuration](https://kea.readthedocs.io/en/latest/arm/dhcp4-srv.html#dhcpv4-server-configuration)
+- [Netnod: Best practices for connecting to NTP servers](https://www.netnod.se/blog/best-practices-connecting-ntp-servers)
+- [Google: NTP Leap Smear](https://developers.google.com/time/smear)
+- [SIDN Labs: Time for sovereignty](https://www.sidnlabs.nl/en/news-and-blogs/time-for-sovereignty)
+- [TimeNL: Network Time Security (NTS)](https://nts.time.nl/)
 
 ## Contributing
 
