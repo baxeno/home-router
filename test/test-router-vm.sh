@@ -37,6 +37,14 @@ print_service_status()
     fi
 }
 
+print_ntp_server_status()
+{
+    print_header "chronyd status"
+    chronyc sources -v
+    echo
+    chronyc tracking
+}
+
 print_dhcp_server_leases()
 {
     print_header "${KEA_SERVICE} leases"
@@ -56,9 +64,9 @@ print_firewall_zone()
 # Tests
 print_service_status "${KEA_SERVICE}"
 print_service_status "${CHRONYD_SERVICE}"
+print_ntp_server_status
 print_dhcp_server_leases
 print_firewall_zone "external"
 print_firewall_zone "internal"
 
 echo -e "${GREEN}Completed check${NC}"
-
