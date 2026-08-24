@@ -33,6 +33,7 @@ The following variables can be set in inventory file:
   - `ipv4`: IPv4 address
 - `nts_ntp_servers`: NTS/NTP servers used by router.
   - `hostname`: Hostname (not IP address) of NTS server
+  - `type`: NTS server type, can only be `pool` or `server`.
 
 The following variables are automatically calculated based on other variables.
 - `router_lan_subnet`: Calculated based on `router_lan_network`.
