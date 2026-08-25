@@ -40,7 +40,9 @@ print_service_status()
 print_ntp_server_status()
 {
     print_header "chronyd status"
+    chronyc -v
     chronyc sources -v
+    chronyc -N sources
     echo
     chronyc tracking
 }
