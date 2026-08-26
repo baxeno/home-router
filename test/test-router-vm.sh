@@ -15,7 +15,7 @@ GRAY='\033[2m'
 NC='\033[0m' # No Color
 
 KEA_SERVICE="kea-dhcp4.service"
-KEA_LEASES="/var/lib/kea/kea-leases4.csv"
+KEA_LEASES_DIRECTORY="/var/lib/kea"
 CHRONYD_SERVICE="chronyd.service"
 
 print_header()
@@ -50,7 +50,7 @@ print_ntp_server_status()
 print_dhcp_server_leases()
 {
     print_header "${KEA_SERVICE} leases"
-    cat "${KEA_LEASES}" | column -s, -t
+    find "${KEA_LEASES_DIRECTORY}" -type f -print0 | xargs -0 cat | column -s, -t
 }
 
 print_firewall_zone()
