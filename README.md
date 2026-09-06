@@ -11,7 +11,7 @@ It require no data sharing or persistent cloud connection for being eligible to 
 AlmaLinux OS (ISO Image/Server Admin) is recommended for supported hardware, as it comes with a 10-year lifecycle providing security updates and support.
 Fedora Linux (Server edition) is recommended for new hardware and latest software features.
 Create a single Ansible inventory file based on [`inventory/localhost.yml`](ansible/inventory/localhost.yml) with your router configuration and you are ready to deploy on any support Linux distribution.
-Avoid firmware backdoors
+Avoid firmware backdoors, unpatched CVEs and residential proxies (sold to AI companies to mask bot traffic).
 
 **Features:**
 
@@ -134,6 +134,10 @@ This result in them being compromised and used in large botnets and/or as AI scr
 
 **Examples:**
 
+- August 2026 [Chinese Routers Sold Worldwide Contain Backdoors](https://www.darkreading.com/vulnerabilities-threats/chinese-routers-sold-worldwide-backdoors)
+- August 2026 [Security researchers find surveillance implants in Chinese-made routers sold worldwide — three different backdoor-like implants hidden in firmware](https://www.tomshardware.com/tech-industry/cyber-security/security-researchers-find-surveillance-implants-in-chinese-made-routers-sold-worldwide-three-different-backdoor-like-implants-hidden-in-firmware)
+  - Shenzhen Zhibotong Electronics (ZBT) routers sold around the world as white-label products
+  - Root-level backdoor (ENDLESSDOORS)
 - June 2026 [These 5 Routers Are No Longer Safe To Use After A New Security Backdoor Was Discovered](https://www.bgr.com/2215770/tenda-router-security-backdoor-cert-safety/)
   - Multiple Tenda WiFi routers contain admin backdoor
 - June 2026 [RustDuck Botnet Rebuilds in Rust to Hijack Routers and Servers for DDoS](https://thehackernews.com/2026/06/rustduck-botnet-rebuilds-in-rust-to.html)
