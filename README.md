@@ -173,6 +173,23 @@ Avoid special local ranges:
   - 169.254.0.0 - 169.254.255.255 (169.254.0.0/16)
     - Link-local addresses assigned automatically when no DHCP server is found on the network.
 
+### What is wrong when devices are able to connect to WiFi but no internet?
+
+DHCP IP pool can get exhaused by mobile phones or laptops that can bearly connect to WiFi Access Point (AP), e.g. when multiple devices are used in the garden in the summer time.
+
+This can be caused by MAC address randomization used by default by newer versions of Android, Linux and Windows.
+
+Recommand solution is to used device true WiFi MAC address (disable randomization) on home network.
+
+Linux (Gnome) Network Manager:
+- WiFi connection -> Identity
+- MAC Address: xx:xx:xx:xx:xx:xx (interface)
+- Cloned Address: Permanent
+
+Android WiFi Network:
+- About this network -> Advanced settings
+- Privacy: Use device MAC address
+
 ### What is a modern open-source foundation?
 
 |Vintage|Modern|Reasoning|
